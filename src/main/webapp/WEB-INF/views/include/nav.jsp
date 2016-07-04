@@ -7,7 +7,7 @@
 
                 <div class="navbar-header mbr-brand mbr-brand--inline">
                     
-                    <div class="brandName"><a href="./index.html" class="navbar-brand brand">csems</a></div>
+                    <div class="brandName"><a href="${path}/" class="navbar-brand brand">csems</a></div>
                 </div>
 
 
