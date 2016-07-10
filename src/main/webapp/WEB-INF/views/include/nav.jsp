@@ -3,7 +3,7 @@
 <section id="menu-13">
 
         <nav class="navbar-inverse navbar-lg navbar-fixed-top">
-            <div class="container">
+            <div class="container" style="height: 80px;">
 
                 <div class="navbar-header mbr-brand mbr-brand--inline">
                     

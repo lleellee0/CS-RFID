@@ -1,0 +1,21 @@
+﻿기자재 (equipment)
+index (int)	auto_increment
+rfid (int)
+title (varchar(255))
+content (text)
+borrwed_member_index (int)	= 0 이라면 대출가능
+due_date (timestamp)
+
+책(book)
+index (int)	auto_increment
+rfid (int)
+title (varchar(255))
+content (text)
+borrwed_member_index (int)	= 0 이라면 대출가능
+due_date (timestamp)		직접 설정
+
+회원(member)
+index (int)	auto_increment
+rfid (int)
+std_number(varchar(15))	학번
+name (varchar(30))
