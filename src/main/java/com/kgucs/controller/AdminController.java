@@ -15,7 +15,7 @@ import com.kgucs.setting.SingletonSetting;
 public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 	
-	@RequestMapping(value = "/admin/", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String admin(Locale locale, Model model) {
 		logger.info("admin Page!! The client locale is {}.", locale);
 		
