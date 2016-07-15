@@ -123,7 +123,7 @@
                 <div class="row center-content">
                     <div class="col-md-5">
                         <h3 class="text-uppercase space20"><font color="#000000">VERSION MANAGEMENT</font></h3>
-                        <p><font color="#000000">개발을 하면서 버전을 관리해야할 필요성을 느껴서 오른쪽의 두 가지를 이용해 버전을 관리했습니다. 대표적인 버전관리 툴인 git과 이를 GUI로 이용하기 위해 SourceTree를 사용하였습니다.</font></p>
+                        <p><font color="#000000">개발을 하면서 버전을 관리해야할 필요성을 느껴서 오른쪽의 두 가지를 이용해 버전을 관리했습니다. 대표적인 버전관리 툴인 git과 이를 GUI로 이용하기 위해 SourceTree를 사용하였습니다. 소스는 <a target="_blank" href="https://github.com/lleellee0/Cs-Rfid" style="color:#ffffff;">이곳</a>에서  확인하실 수 있습니다.</font></p>
                         <div class="space30"></div>
                         
                     </div>

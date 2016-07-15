@@ -1,8 +1,11 @@
-﻿기자재 (equipment)
+﻿Database 이름 : csems
+
+기자재 (equipment)
 index (int)	auto_increment
 rfid (int)
 title (varchar(255))
-content (text)
+content (longtext)
+img (varchar(255)) 	이미지의 url을 저장한다. (서버에 저장하지 않고 불러옴)
 borrwed_member_index (int)	= 0 이라면 대출가능
 due_date (timestamp)
 
@@ -10,12 +13,48 @@ due_date (timestamp)
 index (int)	auto_increment
 rfid (int)
 title (varchar(255))
-content (text)
+content (longtext)
+img (varchar(255)) 	이미지의 url을 저장한다. (서버에 저장하지 않고 불러옴)
 borrwed_member_index (int)	= 0 이라면 대출가능
 due_date (timestamp)		직접 설정
 
 회원(member)
 index (int)	auto_increment
-rfid (int)
+rfid (int) unique
 std_number(varchar(15))	학번
 name (varchar(30))
+is_admin (boolean)
+
+
+
+처음 설치시
+create database csems;
+use csems;
+
+create table `member` (
+	`index` int primary key auto_increment,
+	`rfid` int unique,
+	`std_number` varchar(15) unique,
+	`name` varchar(30),
+	`is_admin` boolean
+);
+
+create table `book` (
+	`index` int primary key auto_increment,
+	`rfid` int unique,
+	`title` varchar(255),
+	`content` longtext,
+	`img` varchar(255),
+	`borrowed_member_index` int,
+	`due_date` datetime default current_timestamp
+);
+
+create table `equipment` (
+	`index` int primary key auto_increment,
+	`rfid` int unique,
+	`title` varchar(255),
+	`content` longtext,
+	`img` varchar(255),
+	`borrowed_member_index` int,
+	`due_date` datetime default current_timestamp
+);

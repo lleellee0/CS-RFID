@@ -97,14 +97,14 @@
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="section-head text-center space30">
-                        <h1>Tab Content</h1>
+                        <h1>List</h1>
                     </div>
                     <div class="clearfix"></div>
-                    <ul class="nav nav-tabs"><li class=""><a data-toggle="tab" href="#tab1" aria-expanded="false">Responsive</a></li><li class=""><a data-toggle="tab" href="#tab2" aria-expanded="false">Creative</a></li><li class="active"><a data-toggle="tab" href="#tab3" aria-expanded="true">Animated</a></li></ul>
+                    <ul class="nav nav-tabs"><li class=""><a data-toggle="tab" href="#tab1" aria-expanded="false">Books</a></li><li class=""><a data-toggle="tab" href="#tab2" aria-expanded="false">Equipments</a></li></ul>
 
                     <div class="tab-content">
                         <div id="tab1" class="tab-pane fade in active">
-                            <h3 class="space20">Tab heading 1</h3>
+                            <h3 class="space20">Books</h3>
                             <div class="row">
                                 <div class="col-md-6">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis quam in risus pulvinar ultrices eget non sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae proin accumsan odio.</p>
@@ -116,7 +116,7 @@
                         </div>
 
                         <div id="tab2" class="tab-pane fade">
-                            <h3 class="space20">Tab heading 2</h3>
+                            <h3 class="space20">Equpments</h3>
                             <div class="row">
                                 <div class="col-md-6">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis quam in risus pulvinar ultrices eget non sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae proin accumsan odio.</p>
@@ -126,18 +126,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div id="tab3" class="tab-pane fade">
-                            <h3 class="space20">Tab heading 3</h3>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis quam in risus pulvinar ultrices eget non sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae proin accumsan odio.</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Praesent euismod quis eros a facilisis. Donec magna lacus, consectetur sed tortor in, imperdiet porta nulla. In elementum gravida est, ut porttitor tortor viverra ut. Ut orci justo, maximus nec turpis vel, laoreet finibus elit.</p>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

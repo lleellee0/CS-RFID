@@ -24,7 +24,7 @@
                     <p>융합보안학과 도서 및 기자재 관리 시스템입니다.<br>가칭 CSEMS(Conversion Security Equipment Management System)</p>
                     <div class="space30"></div>
 
-                    <div><a href="#" class="btn btn-lg btn-primary">Know more csems<i class="icon-location2"></i></a></div>
+                    <div><a href="${path}/howtouse" class="btn btn-lg btn-primary">Know more csems<i class="icon-location2"></i></a></div>
                 </div>
             </div>
 
@@ -133,8 +133,8 @@
                 <div class="col-md-3 col-sm-3">
                     <div class="stats2-info">
                         <i class="fa fa-play-circle"></i>
-                        <p><span class="count">3777</span></p>
-                        <h2>in use</h2>
+                        <p><span class="count">3777</span>/<span class="count">1234</span></p>
+                        <h2>in use(book/equipment)</h2>
                     </div>
                 </div>
             </div>
