@@ -25,5 +25,15 @@
 	
 	<context:property-placeholder location="/WEB-INF/classes/*.properties" />
 	
+	<interceptors>
+		<interceptor>
+			<mapping path="/borrow/**"/>
+			<beans:bean class="com.kgucs.interceptor.LoginInterCeptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/admin/**"/>
+			<beans:bean class="com.kgucs.interceptor.AdminInterCeptor"/>
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

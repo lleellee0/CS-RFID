@@ -20,12 +20,11 @@ due_date (timestamp)		직접 설정
 
 회원(member)
 index (int)	auto_increment
-rfid (int) unique
+id (varchar(30)) 아이디
+password (varchar(255)) 비밀번호 (mysql password 함수 사용)
 std_number(varchar(15))	학번
 name (varchar(30))
 is_admin (boolean)
-
-
 
 처음 설치시
 create database csems;
@@ -33,10 +32,11 @@ use csems;
 
 create table `member` (
 	`index` int primary key auto_increment,
-	`rfid` int unique,
+	`id` varchar(30) unique,
+	`password` varchar(255),
 	`std_number` varchar(15) unique,
 	`name` varchar(30),
-	`is_admin` boolean
+	`member_level` int
 );
 
 create table `book` (

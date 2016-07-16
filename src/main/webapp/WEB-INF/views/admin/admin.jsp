@@ -45,21 +45,17 @@
 						            <fieldset>
 						                <legend>Register Form</legend>
 						                <div>
-						                    <input type="text" name="first_name" placeholder="First Name"/>
+						                    <input type="text" name="title" placeholder="책 제목" required/>
 						                </div>
 						                <div>
-						                    <input type="text" name="last_name" placeholder="Last Name"/>
-						                </div>
-						                <div>
-						                    <input type="password" name="first_name" placeholder="Password"/>
-						                </div>
-						                <div>
-						                    <input type="text" name="email" placeholder="Email"/>
-						                </div>
-						                <div>
-						                    <div class="small">this textarea is just for test so you can see the placeholder working on textarea as well</div>
-						                    <textarea name="message" placeholder="Message"></textarea>
+						                    <textarea name="content" placeholder="책 내용" required></textarea>
 						                </div>    
+						                <div>
+						                    <input type="text" name="img" placeholder="책 이미지 URL" required/>
+						                </div>
+						                <div>
+						                    <input type="text" name="RFID" placeholder="내용을 다 채우고 RFID를 찍어주세요." required/>
+						                </div>
 						                <input type="submit" name="submit" value="Send"/>
 						            </fieldset>    
 						        </form>
@@ -81,6 +77,26 @@
                     <!-- <span class="count">899</span> 카운트하고 싶으면.. -->
                         <p>
                         	Equipment Registration
+                        	<div id="wrapper">
+						        <form action="" method="post">
+						            <fieldset>
+						                <legend>Register Form</legend>
+						                <div>
+						                    <input type="text" name="title" placeholder="장비 이름" required/>
+						                </div>
+						                <div>
+						                    <textarea name="content" placeholder="장비 설명" required></textarea>
+						                </div>    
+						                <div>
+						                    <input type="text" name="img" placeholder="장비 이미지 URL" required/>
+						                </div>
+						                <div>
+						                    <input type="text" name="RFID" placeholder="내용을 다 채우고 RFID를 찍어주세요." required/>
+						                </div>
+						                <input type="submit" name="submit" value="Send"/>
+						            </fieldset>    
+						        </form>
+						    </div>
                         </p>
                     </div>
                 </div>

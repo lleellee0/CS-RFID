@@ -19,7 +19,11 @@ public class SingletonSetting {
 		return instance;
 	}
 	
-	public String getPath() { return path; }
+	public String getPath() { return this.path; }
+	public String getDatabaseUrl() { return this.databaseUrl; }
+	public String getDatabaseName() { return this.databaseName; }
+	public String getUserName() { return this.userName; }
+	public String getUserPassword() { return this.userPassword; }
 	
 	
 	/*

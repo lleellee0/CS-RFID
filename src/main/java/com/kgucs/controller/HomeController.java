@@ -4,6 +4,10 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -11,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kgucs.dao.member.MemberDao;
+import com.kgucs.dao.member.MemberVo;
 import com.kgucs.setting.SingletonSetting;
 
 /**
@@ -50,6 +56,19 @@ public class HomeController {
 		return "list";
 	}
 	
+	@RequestMapping(value = "/list/details/{index}", method = RequestMethod.GET)
+	public String details(Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		SingletonSetting ssi = SingletonSetting.getInstance();
+		ssi.setAllParameter(model);
+		
+		return "details";
+	}
+	
 	@RequestMapping(value = "/howtouse", method = RequestMethod.GET)
 	public String howToUse(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -64,7 +83,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
-	public String About(Locale locale, Model model) {
+	public String about(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -76,5 +95,38 @@ public class HomeController {
 		return "about";
 	}
 	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		SingletonSetting ssi = SingletonSetting.getInstance();
+		ssi.setAllParameter(model);
+		
+		return "login";
+	}
 	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public void login_check(Locale locale, Model model,
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		SingletonSetting ssi = SingletonSetting.getInstance();
+		ssi.setAllParameter(model);
+		
+		MemberDao dao = new MemberDao();
+		MemberVo vo = dao.selectByIdAndPassword(request.getParameter("id"), request.getParameter("password"));
+		
+		if(vo.getId() != null) {	// 로그인 성공!
+			request.getSession().setAttribute("memberVo", vo);
+			response.sendRedirect((String) request.getSession().getAttribute("whereToGo"));
+		} else { // 로그인 실패!
+			response.sendRedirect(ssi.getPath() + "/login");
+		}
+	}
 }
