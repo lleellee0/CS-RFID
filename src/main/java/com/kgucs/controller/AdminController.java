@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kgucs.dao.book.BookDao;
+import com.kgucs.dao.book.BookVo;
 import com.kgucs.setting.SingletonSetting;
 
 @Controller
@@ -30,12 +34,22 @@ public class AdminController {
 		return "admin/admin";
 	}
 	
-	@RequestMapping(value = "/admin/summernote", method = RequestMethod.GET)
-	public String summernote(Locale locale, Model model) {
+	@RequestMapping(value = "/admin/book/regist", method = RequestMethod.POST)
+	public void bookRegist(Locale locale, Model model, HttpServletRequest request) throws Exception {
 		
 		SingletonSetting ssi = SingletonSetting.getInstance();
 		ssi.setAllParameter(model);
 		
-		return "admin/summernote";
+		BookDao dao = new BookDao();
+		BookVo vo = new BookVo(Integer.parseInt(request.getParameter("rfid")),
+				request.getParameter("title"),
+				request.getParameter("writer"),
+				request.getParameter("publisher"),
+				request.getParameter("content"),
+				request.getParameter("img"),
+				0,
+				"");
+		
+		dao.insert(vo);
 	}
 }

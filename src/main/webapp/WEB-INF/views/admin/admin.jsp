@@ -41,11 +41,17 @@
                         <p>
                         	Book Registration
                         	<div id="wrapper">
-						        <form action="" method="post">
+						        <form action="${path}/admin/book/regist" method="post">
 						            <fieldset>
 						                <legend>Register Form</legend>
 						                <div>
 						                    <input type="text" name="title" placeholder="책 제목" required/>
+						                </div>
+						                <div>
+						                    <input type="text" name="writer" placeholder="저자" required/>
+						                </div>
+						                <div>
+						                    <input type="text" name="publisher" placeholder="출판사" required/>
 						                </div>
 						                <div>
 						                    <textarea name="content" placeholder="책 내용" required></textarea>
@@ -54,7 +60,7 @@
 						                    <input type="text" name="img" placeholder="책 이미지 URL" required/>
 						                </div>
 						                <div>
-						                    <input type="text" name="RFID" placeholder="내용을 다 채우고 RFID를 찍어주세요." required/>
+						                    <input type="text" name="rfid" placeholder="내용을 다 채우고 RFID를 찍어주세요." required/>
 						                </div>
 						                <input type="submit" name="submit" value="Send"/>
 						            </fieldset>    
@@ -78,7 +84,7 @@
                         <p>
                         	Equipment Registration
                         	<div id="wrapper">
-						        <form action="" method="post">
+						        <form action="${path}/admin/equip/regist" method="post">
 						            <fieldset>
 						                <legend>Register Form</legend>
 						                <div>

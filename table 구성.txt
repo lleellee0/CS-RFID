@@ -26,8 +26,18 @@ std_number(varchar(15))	학번
 name (varchar(30))
 is_admin (boolean)
 
+
+로그(log)
+index (int) auto_increment
+type (varchar(20)) 'book', 'equipment'
+type_index int
+action (varchar(30)) 대출/반납
+member_index int
+action_date (timestamp)
+
+
 처음 설치시
-create database csems;
+create database csems DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 use csems;
 
 create table `member` (
@@ -43,6 +53,8 @@ create table `book` (
 	`index` int primary key auto_increment,
 	`rfid` int unique,
 	`title` varchar(255),
+	`writer` varchar(30),
+	`publisher` varchar(50),
 	`content` longtext,
 	`img` varchar(255),
 	`borrowed_member_index` int,

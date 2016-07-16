@@ -12,9 +12,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kgucs.dao.book.BookDao;
 import com.kgucs.dao.member.MemberDao;
 import com.kgucs.dao.member.MemberVo;
 import com.kgucs.setting.SingletonSetting;
@@ -44,7 +46,12 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Locale locale, Model model) {
+	public void list(Locale locale, Model model) {
+		list(locale, model, 1);
+	}
+	
+	@RequestMapping(value = "/list/{page}", method = RequestMethod.GET)
+	public String list(Locale locale, Model model, @PathVariable("page") int page) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -53,11 +60,16 @@ public class HomeController {
 		SingletonSetting ssi = SingletonSetting.getInstance();
 		ssi.setAllParameter(model);
 		
+		BookDao dao = new BookDao();
+		
+		model.addAttribute("list", dao.selectByPage(page));
+		model.addAttribute("lastPageNumber", dao.getLastPageNumber());
+		
 		return "list";
 	}
 	
 	@RequestMapping(value = "/list/details/{index}", method = RequestMethod.GET)
-	public String details(Locale locale, Model model) {
+	public String details(Locale locale, Model model, @PathVariable("index") int index) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		Date date = new Date();

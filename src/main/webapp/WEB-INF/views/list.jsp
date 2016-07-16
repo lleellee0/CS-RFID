@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -106,11 +107,41 @@
                         <div id="tab1" class="tab-pane fade in active">
                             <h3 class="space20">Books</h3>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis quam in risus pulvinar ultrices eget non sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae proin accumsan odio.</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Praesent euismod quis eros a facilisis. Donec magna lacus, consectetur sed tortor in, imperdiet porta nulla. In elementum gravida est, ut porttitor tortor viverra ut. Ut orci justo, maximus nec turpis vel, laoreet finibus elit.</p>
+                                <div class="col-md-12">
+	                                <table class="table table-striped">
+								      <thead>
+								        <tr>
+								          <th style="width:10%;">#</th>
+								          <th style="width:40%;">제목</th>
+								          <th style="width:15%;">저자</th>
+								          <th style="width:15%;">출판사</th>
+								          <th style="width:20%;">대출상태</th>
+								        </tr>
+								      </thead>
+								      <tbody>
+								      	<c:forEach items="${list}" var="list" varStatus="status">
+								      		<tr>
+	                                			<th>${list.index}</th>
+	                                			<td><a href="${path}/list/details/${list.index}" class="screenshot" 
+	                                			rel="${list.img}" title="${list.content}">${list.title}</a></td>
+	                                			<td>${list.writer}</td>
+	                                			<td>${list.publisher}</td>
+	                                			<td>${list.borrowed_member_index}</td>
+	                               			</tr>
+	                                	</c:forEach>
+								      </tbody>
+								    </table>
+								   <nav>
+								      <ul class="pagination">
+								        <li class="disabled"><a href="#content6-24" aria-label="Previous" style="margin: 0px;"><span aria-hidden="true">«</span></a></li>
+								        <li class="active"><a href="${path}/list/1#content6-24" style="margin: 0px;">1</a></li>
+								        <li><a href="${path}/list/2#content6-24" style="margin: 0px;">2</a></li>
+								        <li><a href="#" style="margin: 0px;">3</a></li>
+								        <li><a href="#" style="margin: 0px;">4</a></li>
+								        <li><a href="#" style="margin: 0px;">5</a></li>
+								        <li><a href="#" aria-label="Next" style="margin: 0px;"><span aria-hidden="true">»</span></a></li>
+								     </ul>
+								   </nav>
                                 </div>
                             </div>
                         </div>
@@ -135,6 +166,22 @@
 </section>
 <%@include file="include/footer.jsp" %>
 <%@include file="include/script.jsp" %>
+
+<script>
+$(".pagination li a").on("mouseover", function(event) {
+	$(event.target).css("margin", "0px 5px");
+});
+$(".pagination li a").on("mouseout", function(event) {
+	$(event.target).css("margin", "0px");
+});
+$(".pagination li a span").on("mouseover", function(event) {
+	$($(event.target).closest("a")).css("margin", "0px 5px");
+});
+$(".pagination li a span").on("mouseout", function(event) {
+	$($(event.target).closest("a")).css("margin", "0px");
+});
+</script>
+<script src="${path}/assets/js/main.js"></script>
 
 </body>
 </html>

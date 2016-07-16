@@ -1,16 +1,128 @@
 package com.kgucs.dao.book;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.kgucs.dao.AbstractDao;
+import com.kgucs.setting.SingletonSetting;
 
-public class BookDao extends AbstractDao {
-	final StringBuffer sql = new StringBuffer();
-	final BookVo bv = new BookVo();
+public class BookDao {
+	StringBuffer sql = null;
+	final BookVo mv = new BookVo();
+	final List<BookVo> list = new ArrayList<BookVo>();
+	int count = 0;
 	
-
-	@Override
-	public void query() throws Exception {
-		// TODO Auto-generated method stub
+	public void insert(final BookVo vo) throws Exception {
+		sql = new StringBuffer();
+		sql.append("INSERT INTO book ");
+		sql.append("(rfid, title, writer, publisher, content, img, borrowed_member_index) ");
+		sql.append("VALUES (?, ?, ?, ?, ?, ?, ?)");
 		
+		new AbstractDao() {
+			@Override
+			public void query() throws Exception {
+				pstmt = con.prepareStatement(sql.toString());
+				pstmt.setInt(1, vo.getRfid());
+				pstmt.setString(2, vo.getTitle());
+				pstmt.setString(3, vo.getWriter());
+				pstmt.setString(4, vo.getPublisher());
+				pstmt.setString(5, vo.getContent());
+				pstmt.setString(6, vo.getImg());
+				pstmt.setInt(7, vo.getBorrowed_member_index());
+				
+				pstmt.executeUpdate();
+			}
+		}.execute();
 	}
 	
+	public BookVo selectByIndex(final int index) {
+		/*
+		 * 파라미터에 final이 붙는 이유 http://devbible.tistory.com/30
+		 */
+		sql = new StringBuffer();
+		sql.append("SELECT * FROM ");
+		sql.append("book WHERE ");
+		sql.append("`index`=?");
+		
+		new AbstractDao() {
+			@Override
+			public void query() throws Exception {
+				pstmt = con.prepareStatement(sql.toString());
+				pstmt.setInt(1, index);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					mv.setIndex(rs.getInt(1));
+					mv.setRfid(rs.getInt(2));
+					mv.setTitle(rs.getString(3));
+					mv.setWriter(rs.getString(4));
+					mv.setPublisher(rs.getString(5));
+					mv.setContent(rs.getString(6));
+					mv.setImg(rs.getString(7));
+					mv.setBorrowed_member_index(rs.getInt(8));
+					mv.setDue_date(rs.getString(9));
+				}
+			}
+		}.execute();
+		return mv;
+	}
+	
+	public List<BookVo> selectByPage(final int page) {
+		sql = new StringBuffer();
+		sql.append("SELECT * FROM ");
+		sql.append("book LIMIT ");
+		sql.append("?, ?");
+		
+		new AbstractDao() {
+			@Override
+			public void query() throws Exception {
+				pstmt = con.prepareStatement(sql.toString());
+				
+				SingletonSetting ssi = SingletonSetting.getInstance();
+				int pageSize = ssi.getPageSize();
+				
+				
+				pstmt.setInt(1, (page-1) * pageSize);
+				pstmt.setInt(2, pageSize);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					BookVo vo = new BookVo(); 
+					vo.setIndex(rs.getInt(1));
+					vo.setRfid(rs.getInt(2));
+					vo.setTitle(rs.getString(3));
+					vo.setWriter(rs.getString(4));
+					vo.setPublisher(rs.getString(5));
+					vo.setContent(rs.getString(6));
+					vo.setImg(rs.getString(7));
+					vo.setBorrowed_member_index(rs.getInt(8));
+					vo.setDue_date(rs.getString(9));
+					list.add(vo);
+				}
+			}
+		}.execute();
+		return list;
+	}
+	
+	public int getLastPageNumber() {
+		sql = new StringBuffer();
+		sql.append("SELECT count(*) FROM ");
+		sql.append("book");
+		
+		new AbstractDao() {
+			@Override
+			public void query() throws Exception {
+				pstmt = con.prepareStatement(sql.toString());
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					count = rs.getInt(1);
+				}
+			}
+		}.execute();
+		SingletonSetting ssi = SingletonSetting.getInstance();
+		int pageSize = ssi.getPageSize();
+
+		return (count/pageSize) + 1;
+	}
 }
