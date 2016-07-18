@@ -9,6 +9,14 @@
   <%@include file="include/meta.jsp" %>
   <%@include file="include/css.jsp" %>
   
+  <style>
+  .enabled {
+  	color: #00ccff;
+  }
+  .disabled {
+  	color: #ff9900;
+  }
+  </style>
   
   
 </head>
@@ -101,10 +109,12 @@
                         <h1>List</h1>
                     </div>
                     <div class="clearfix"></div>
-                    <ul class="nav nav-tabs"><li class=""><a data-toggle="tab" href="#tab1" aria-expanded="false">Books</a></li><li class=""><a data-toggle="tab" href="#tab2" aria-expanded="false">Equipments</a></li></ul>
+                    <ul class="nav nav-tabs">
+                    <li id="bookTabButton" class="tabButton active"><a data-toggle="tab" href="#bookTab" aria-expanded="true">Books</a></li>
+                    <li id="equipmentTabButton" class="tabButton"><a data-toggle="tab" href="#equipmentTab" aria-expanded="false">Equipments</a></li></ul>
 
                     <div class="tab-content">
-                        <div id="tab1" class="tab-pane fade in active">
+                        <div id="bookTab" class="tab-pane fade in active">
                             <h3 class="space20">Books</h3>
                             <div class="row">
                                 <div class="col-md-12">
@@ -119,7 +129,7 @@
 								        </tr>
 								      </thead>
 								      <tbody id="bookTable">
-								      	<c:forEach items="${list}" var="list" varStatus="status">
+								      	<c:forEach items="${bookList}" var="list" varStatus="status">
 								      		<tr>
 	                                			<th>${list.index}</th>
 	                                			<td><a href="${path}/list/book/details/${list.index}" class="screenshot" 
@@ -131,7 +141,7 @@
 	                                					<td class="enabled">대출가능</td>
 	                                				</c:when>
 	                                				<c:otherwise>
-	                                					<td class="disabled">대출중..</td>
+	                                					<td class="disabled">대출중</td>
 	                                				</c:otherwise>
 	                                			</c:choose>
 	                               			</tr>
@@ -141,8 +151,7 @@
 								   <nav>
 								      <ul class="pagination" id="bookPage">
 <!-- 								        <li class="disabled"><a href="#content6-24" aria-label="Previous" style="margin: 0px;"><span aria-hidden="true">«</span></a></li>-->
-								        <li class="page"><a href="#content6-24" style="margin: 0px;">1</a></li>
-								        <c:forEach var="i" begin="2" end="${lastPageNumber}">
+								        <c:forEach var="i" begin="1" end="${bookLastPageNumber}">
 								        	<li id="bookPage${i}" class="page"><a href="#content6-24" style="margin: 0px;">${i}</a></li>
 								        </c:forEach>
 
@@ -153,7 +162,7 @@
                             </div>
                         </div>
 
-                        <div id="tab2" class="tab-pane fade">
+                        <div id="equipmentTab" class="tab-pane fade">
                             <h3 class="space20">Equipments</h3>
                             <div class="row">
                                 <div class="col-md-12">
@@ -161,26 +170,22 @@
 								      <thead>
 								        <tr>
 								          <th style="width:10%;">#</th>
-								          <th style="width:40%;">제목</th>
-								          <th style="width:15%;">저자</th>
-								          <th style="width:15%;">출판사</th>
-								          <th style="width:20%;">대출상태</th>
+								          <th style="width:60%;">제목</th>
+								          <th style="width:30%;">대출상태</th>
 								        </tr>
 								      </thead>
 								      <tbody id="equipmentTable">
-								      	<c:forEach items="${list}" var="list" varStatus="status">
+								      	<c:forEach items="${equipmentList}" var="list" varStatus="status">
 								      		<tr>
 	                                			<th>${list.index}</th>
-	                                			<td><a href="${path}/list/details/${list.index}" class="screenshot" 
+	                                			<td><a href="${path}/list/equipment/details/${list.index}" class="screenshot" 
 	                                			rel="${list.img}" title="${list.content}">${list.title}</a></td>
-	                                			<td>${list.writer}</td>
-	                                			<td>${list.publisher}</td>
 	                                			<c:choose>
 	                                				<c:when test="${list.borrowed_member_index eq 0}">
-	                                					<td>대출가능</td>
+	                                					<td class="enabled">대여가능</td>
 	                                				</c:when>
 	                                				<c:otherwise>
-	                                					<td>대출중..</td>
+	                                					<td class="disabled">대여중</td>
 	                                				</c:otherwise>
 	                                			</c:choose>
 	                               			</tr>
@@ -188,11 +193,10 @@
 								      </tbody>
 								    </table>
 								   <nav>
-								      <ul class="pagination" id="bookPage">
+								      <ul class="pagination" id="equipmentPage">
 <!-- 								        <li class="disabled"><a href="#content6-24" aria-label="Previous" style="margin: 0px;"><span aria-hidden="true">«</span></a></li>-->
-								        <li class="active page"><a href="#content6-24" style="margin: 0px;">1</a></li>
-								        <c:forEach var="i" begin="2" end="${lastPageNumber}">
-								        	<li class="page"><a href="#content6-24" style="margin: 0px;">${i}</a></li>
+								        <c:forEach var="i" begin="1" end="${equipmentLastPageNumber}">
+								        	<li id="equipmentPage${i}" class="page"><a href="#content6-24" style="margin: 0px;">${i}</a></li>
 								        </c:forEach>
 
 <!-- 								        <li><a href="#" aria-label="Next" style="margin: 0px;"><span aria-hidden="true">»</span></a></li>-->
@@ -227,7 +231,7 @@ $(".pagination li a span").on("mouseout", function(event) {
 
 function requestBookPage(page) {
 	$.ajax({
-	    url : "${path}/list",
+	    url : "${path}/list/book",
 	    dataType : "json",
 	    type : "post",
 	    data : {"page":page, "type":"book"},
@@ -242,14 +246,17 @@ function requestBookPage(page) {
 	        	code += "rel='" + data[i][1] + "' title='" + data[i][2] + "'>" + data[i][3] + "</a></td>";
 	        	code += "<td>" + data[i][4] + "</td>";
 	        	code += "<td>" + data[i][5] + "</td>";
-	        	code += "<td>" + data[i][6] + "</td>";
+	        	if(data[i][6] === "enabled")
+	        		code += "<td class='enabled'>대출가능 </td>";
+	        	else
+	        		code += "<td class='disabled'>대출중 </td>";
 	        	code += "</tr>"
 	        }
 			$('#bookTable').html(code);
 			console.log(data[5]);
 			screenshotPreview();	// 미리보기 이벤트 등록
-			
-			window.history.replaceState(null, "", "${path}/list/book/" + page);
+			window.history.replaceState(null, "", "${path}/list/book/" + page);	// URL 변경
+			validateByUrl();
 	    },
 	    error:function(request,status,error){
 	        alert("code:"+request.status+"\n"+"error:"+error);
@@ -257,20 +264,92 @@ function requestBookPage(page) {
 	}); 
 }
 
-$("#tab1").on("click", ".pagination .page a", function(event) {
+$("#bookTab").on("click", ".pagination .page a", function(event) {
 	console.log("책 페이지 이벤트 발생");
 	requestBookPage($(event.target).text());
-	$(".pagination li").removeClass("active");
+	$("#bookTab .pagination li").removeClass("active");
 	$(event.target).closest("li").addClass("active");
 });
 
-$(document).ready(function() {
+
+
+function requestEquipmentPage(page) {
+	$.ajax({
+	    url : "${path}/list/equipment",
+	    dataType : "json",
+	    type : "post",
+	    data : {"page":page, "type":"equipment"},
+	    success: function(data) {
+	        $('#equipmentTable').empty();
+	        var code = "";
+	        console.log(Object.keys(data).length);
+	        for(var i = 0, len = Object.keys(data).length; i < len;i++) {
+	        	code += "<tr>";
+	        	code += "<th>" + data[i][0] + "</th>";
+	        	code += "<td><a href='${path}/list/equipment/details/" + data[i][0] + "' class='screenshot' ";
+	        	code += "rel='" + data[i][1] + "' title='" + data[i][2] + "'>" + data[i][3] + "</a></td>";
+	        	if(data[i][4] === "enabled")
+	        		code += "<td class='enabled'>대여가능 </td>";
+	        	else
+	        		code += "<td class='disabled'>대여중 </td>";
+	        	code += "</tr>"
+	        }
+			$('#equipmentTable').html(code);
+			console.log(data[5]);
+			screenshotPreview();	// 미리보기 이벤트 등록
+			window.history.replaceState(null, "", "${path}/list/equipment/" + page);	// URL 변경
+			validateByUrl();
+	    },
+	    error:function(request,status,error){
+	        alert("code:"+request.status+"\n"+"error:"+error);
+	    }
+	}); 
+}
+
+$("#equipmentTab").on("click", ".pagination .page a", function(event) {
+	console.log("장비 페이지 이벤트 발생");
+	requestEquipmentPage($(event.target).text());
+	$("#equipmentTab .pagination li").removeClass("active");
+	$(event.target).closest("li").addClass("active");
+});
+
+function validateByUrl() {
 	var url = (window.location.pathname);
 	var urlSplit = url.split('/');
 	var type = urlSplit[urlSplit.length-2];
 	var page = urlSplit[urlSplit.length-1];
 	
+	$(".page").removeClass("active");
 	$("#" + type + "Page" + page).addClass("active");
+	
+	// 탭 버튼 변경
+	$(".tabButton").removeClass("active");
+	$("#" + type + "TabButton").addClass("active");
+	
+	// 탭 화면 변경
+	$(".tab-pane").removeClass("in");
+	$(".tab-pane").removeClass("active");
+	$("#" + type + "Tab").addClass("in");
+	$("#" + type + "Tab").addClass("active");
+}
+
+
+$(document).ready(function() {
+	validateByUrl();
+});
+
+$("#bookTabButton a").on("click", function(event) {
+	requestBookPage(1);
+//	validateByUrl();
+//	$("#bookTab .pagination li").removeClass("active");
+//	$(event.target).closest("li").addClass("active");
+});
+
+$("#equipmentTabButton a").on("click", function(event) {
+	requestEquipmentPage(1);
+//	validateByUrl();
+//	$("#bookTab .pagination li").removeClass("active");
+//	$(event.target).closest("li").addClass("active");
 });
 
 </script>

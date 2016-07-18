@@ -84,7 +84,7 @@
                         <p>
                         	Equipment Registration
                         	<div id="wrapper">
-						        <form action="${path}/admin/equip/regist" method="post">
+						        <form action="${path}/admin/equipment/regist" method="post">
 						            <fieldset>
 						                <legend>Register Form</legend>
 						                <div>
@@ -97,7 +97,7 @@
 						                    <input type="text" name="img" placeholder="장비 이미지 URL" required/>
 						                </div>
 						                <div>
-						                    <input type="text" name="RFID" placeholder="내용을 다 채우고 RFID를 찍어주세요." required/>
+						                    <input type="text" name="rfid" placeholder="내용을 다 채우고 RFID를 찍어주세요." required/>
 						                </div>
 						                <input type="submit" name="submit" value="Send"/>
 						            </fieldset>    

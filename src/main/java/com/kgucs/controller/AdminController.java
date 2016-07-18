@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kgucs.dao.book.BookDao;
 import com.kgucs.dao.book.BookVo;
+import com.kgucs.dao.equipment.EquipmentDao;
+import com.kgucs.dao.equipment.EquipmentVo;
 import com.kgucs.setting.SingletonSetting;
 
 @Controller
@@ -45,6 +47,22 @@ public class AdminController {
 				request.getParameter("title"),
 				request.getParameter("writer"),
 				request.getParameter("publisher"),
+				request.getParameter("content"),
+				request.getParameter("img"),
+				0,
+				"");
+		
+		dao.insert(vo);
+	}
+	
+	@RequestMapping(value = "/admin/equipment/regist", method = RequestMethod.POST)
+	public void equipmentRegist(Locale locale, Model model, HttpServletRequest request) throws Exception {
+		SingletonSetting ssi = SingletonSetting.getInstance();
+		ssi.setAllParameter(model);
+		
+		EquipmentDao dao = new EquipmentDao();
+		EquipmentVo vo = new EquipmentVo(Integer.parseInt(request.getParameter("rfid")),
+				request.getParameter("title"),
 				request.getParameter("content"),
 				request.getParameter("img"),
 				0,

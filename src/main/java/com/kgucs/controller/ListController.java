@@ -6,9 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -21,11 +18,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kgucs.dao.book.BookDao;
 import com.kgucs.dao.book.BookVo;
+import com.kgucs.dao.equipment.EquipmentDao;
+import com.kgucs.dao.equipment.EquipmentVo;
 import com.kgucs.dao.member.MemberDao;
 import com.kgucs.dao.member.MemberVo;
 import com.kgucs.setting.SingletonSetting;
-
-import javafx.beans.binding.IntegerExpression;
 
 /**
  * Handles requests for the application home page.
@@ -43,6 +40,29 @@ public class ListController {
 		list(locale, model, 1);
 	}
 	
+	@RequestMapping(value = "/list/equipment/{page}", method = RequestMethod.GET)
+	public String listEquipmenmt(Locale locale, Model model, @PathVariable("page") int page) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+
+		SingletonSetting ssi = SingletonSetting.getInstance();
+		ssi.setAllParameter(model);
+
+		BookDao bookDao = new BookDao();
+
+		model.addAttribute("bookList", bookDao.selectByPage(page));
+		model.addAttribute("bookLastPageNumber", bookDao.getLastPageNumber());
+		
+		EquipmentDao equipmentDao = new EquipmentDao();
+
+		model.addAttribute("equipmentList", equipmentDao.selectByPage(page));
+		model.addAttribute("equipmentLastPageNumber", equipmentDao.getLastPageNumber());
+		
+		return "list";
+	}
+	
 	@RequestMapping(value = "/list/book/{page}", method = RequestMethod.GET)
 	public String list(Locale locale, Model model, @PathVariable("page") int page) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -53,17 +73,24 @@ public class ListController {
 		SingletonSetting ssi = SingletonSetting.getInstance();
 		ssi.setAllParameter(model);
 
-		BookDao dao = new BookDao();
+		BookDao bookDao = new BookDao();
 
-		model.addAttribute("list", dao.selectByPage(page));
-		model.addAttribute("lastPageNumber", dao.getLastPageNumber());
+		model.addAttribute("bookList", bookDao.selectByPage(page));
+		model.addAttribute("bookLastPageNumber", bookDao.getLastPageNumber());
+		
+		EquipmentDao equipmentDao = new EquipmentDao();
+
+		model.addAttribute("equipmentList", equipmentDao.selectByPage(page));
+		model.addAttribute("equipmentLastPageNumber", equipmentDao.getLastPageNumber());
 
 		return "list";
 	}
-
+	
+	
+	
 	@ResponseBody
-	@RequestMapping(value = "/list", method = RequestMethod.POST)
-	public HashMap<String, Object> listData(@RequestParam HashMap<String, Object> page) {
+	@RequestMapping(value = "/list/book", method = RequestMethod.POST)
+	public HashMap<String, Object> bookListData(@RequestParam HashMap<String, Object> page) {
 
 		System.out.println(page);
 		System.out.println("page is " + page.get("page"));
@@ -83,7 +110,40 @@ public class ListController {
 			arr[3] = vo.getTitle();
 			arr[4] = vo.getWriter();
 			arr[5] = vo.getPublisher();
-			arr[6] = Integer.toString(vo.getBorrowed_member_index());
+			if(vo.getBorrowed_member_index() == 0)
+				arr[6] = "enabled";
+			else
+				arr[6] = "disabled";
+			hashmap.put(Integer.toString(i), arr);
+		}
+
+		return hashmap;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/list/equipment", method = RequestMethod.POST)
+	public HashMap<String, Object> equipmentListData(@RequestParam HashMap<String, Object> page) {
+
+		System.out.println(page);
+		System.out.println("page is " + page.get("page"));
+
+		// your logic
+
+		HashMap<String, Object> hashmap = new HashMap<String, Object>();
+		EquipmentDao dao = new EquipmentDao();
+		List<EquipmentVo> list = dao.selectByPage(Integer.parseInt((String)page.get("page")));
+		
+		for(int i = 0; i < list.size(); i++) {
+			EquipmentVo vo = list.get(i);
+			String arr[] = new String[5];
+			arr[0] = Integer.toString(vo.getIndex());
+			arr[1] = vo.getImg();
+			arr[2] = vo.getContent();
+			arr[3] = vo.getTitle();
+			if(vo.getBorrowed_member_index() == 0)
+				arr[4] = "enabled";
+			else
+				arr[4] = "disabled";
 			hashmap.put(Integer.toString(i), arr);
 		}
 
@@ -91,7 +151,7 @@ public class ListController {
 	}
 
 	@RequestMapping(value = "/list/book/details/{index}", method = RequestMethod.GET)
-	public String details(Locale locale, Model model, @PathVariable("index") int index) {
+	public String bookDetails(Locale locale, Model model, @PathVariable("index") int index) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
 		Date date = new Date();
@@ -102,7 +162,37 @@ public class ListController {
 		
 		BookDao dao = new BookDao();
 		BookVo vo = dao.selectByIndex(index);
+		
 		model.addAttribute("details", vo);
+		if(vo.getBorrowed_member_index() != 0) {
+			MemberDao memDao = new MemberDao();
+			MemberVo memVo = memDao.selectByIndex(vo.getBorrowed_member_index());
+			model.addAttribute("memberVo", memVo);
+		}
+		model.addAttribute("type", "book");	// writer와 publisher를 추가해주기 위해.
+
+		return "details";
+	}
+	
+	@RequestMapping(value = "/list/equipment/details/{index}", method = RequestMethod.GET)
+	public String equipmentDetails(Locale locale, Model model, @PathVariable("index") int index) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+
+		SingletonSetting ssi = SingletonSetting.getInstance();
+		ssi.setAllParameter(model);
+		
+		EquipmentDao dao = new EquipmentDao();
+		EquipmentVo vo = dao.selectByIndex(index);
+		
+		model.addAttribute("details", vo);
+		if(vo.getBorrowed_member_index() != 0) {
+			MemberDao memDao = new MemberDao();
+			MemberVo memVo = memDao.selectByIndex(vo.getBorrowed_member_index());
+			model.addAttribute("memberVo", memVo);
+		}
 
 		return "details";
 	}

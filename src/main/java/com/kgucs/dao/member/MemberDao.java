@@ -54,4 +54,29 @@ public class MemberDao {
 		}.execute();
 		return mv;
 	}
+	
+	public MemberVo selectByIndex(final int index) {
+		sql.append("SELECT * FROM ");
+		sql.append("member WHERE ");
+		sql.append("`index`=?");
+		
+		new AbstractDao() {
+			@Override
+			public void query() throws Exception {
+				pstmt = con.prepareStatement(sql.toString());
+				pstmt.setInt(1, index);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					mv.setIndex(rs.getInt(1));
+					mv.setId(rs.getString(2));
+					mv.setPassword(rs.getString(3));
+					mv.setStd_number(rs.getString(4));
+					mv.setName(rs.getString(5));
+					mv.setMember_level(rs.getInt(6));
+				}
+			}
+		}.execute();
+		return mv;
+	}
 }

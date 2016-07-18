@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -8,7 +9,14 @@
   <%@include file="include/meta.jsp" %>
   <%@include file="include/css.jsp" %>
   
-  
+	<style>
+	  .enabled {
+	  	color: #00ccff;
+	  }
+	  .disabled {
+	  	color: #ff9900;
+	  }
+	</style>
   
 </head>
 <body>
@@ -24,8 +32,33 @@
                         </div>
                         <div class="col-md-8">
                             <h2 class="text-uppercase space20">${details.title}</h2>
-                            <h3 class="space20">${details.writer}/${details.publisher}</h3>
-                            <h4 class="space30">${details.borrowed_member_index}</h4>
+                            <c:if test="${type eq 'book'}">
+                            	<h3 class="space20">${details.writer}/${details.publisher}</h3>
+                            </c:if>
+                            
+                            
+                            <c:choose>
+								<c:when test="${details.borrowed_member_index eq 0}">
+									<c:choose>
+										<c:when test="${type eq 'book'}">
+											<h4 class="space30 enabled">대출가능</h4>
+										</c:when>
+										<c:otherwise>
+											<h4 class="space30 enabled">대여가능</h4>
+										</c:otherwise>
+									</c:choose>
+								</c:when>
+								<c:otherwise>
+									<c:choose>
+										<c:when test="${type eq 'book'}">
+											<h4 class="space30 disabled">대출중(${memberVo.std_number}, ${memberVo.name})</h4>
+										</c:when>
+										<c:otherwise>
+											<h4 class="space30 disabled">대여중(${memberVo.std_number}, ${memberVo.name})</h4>
+										</c:otherwise>
+									</c:choose>
+								</c:otherwise>
+							</c:choose>
                             <p>${details.content}</p>
                             <div class="space30"></div>
 <!--                             <div><a class="btn btn-primary">Check video</a></div> -->
