@@ -19,14 +19,16 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="row center-content">
-                        <div class="col-md-7">
-                            	이미지들어갈자리
+                        <div class="col-md-4" style="padding-top:15px;padding-bottom:15px;">
+                            	<img src="${details.img}" style="width:100%;">
                         </div>
-                        <div class="col-md-5">
-                            <h3 class="text-uppercase space20">Youtube Video</h3>
-                            <p>Lorem ipsum dolor sit amet elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+                        <div class="col-md-8">
+                            <h2 class="text-uppercase space20">${details.title}</h2>
+                            <h3 class="space20">${details.writer}/${details.publisher}</h3>
+                            <h4 class="space30">${details.borrowed_member_index}</h4>
+                            <p>${details.content}</p>
                             <div class="space30"></div>
-                            <div><a class="btn btn-primary">Check video</a></div>
+<!--                             <div><a class="btn btn-primary">Check video</a></div> -->
                         </div>
                     </div>
                 </div>

@@ -22,7 +22,7 @@
                 <li data-app-prevent-settings="" data-target="#slider-27" class="active" data-slide-to="0"></li><li data-app-prevent-settings="" data-target="#slider-27" data-slide-to="1"></li><li data-app-prevent-settings="" data-target="#slider-27" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner" role="listbox">
-                <div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height active" style="background-image: url(assets/images/13-fhd.jpg);">
+                <div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height active" style="background-image: url(${path}/assets/images/13-fhd.jpg);">
                     <div class="mbr-box__magnet mbr-box__magnet--center-left mbr-box__magnet--sm-padding">
                     <div class="mbr-overlay"></div>                        
                         <div class=" container">
@@ -40,7 +40,7 @@
                             </div>
                         </div>
                     </div>
-                </div><div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height" style="background-image: url(assets/images/4.jpg);">
+                </div><div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height" style="background-image: url(${path}/assets/images/4.jpg);">
                     <div class="mbr-box__magnet mbr-box__magnet--center-center mbr-box__magnet--sm-padding">
                     <div class="mbr-overlay"></div>                        
                         <div class=" container">
@@ -58,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-                </div><div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height" style="background-image: url(assets/images/15-revert-fhd.jpg);">
+                </div><div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height" style="background-image: url(${path}/assets/images/15-revert-fhd.jpg);">
                     <div class="mbr-box__magnet mbr-box__magnet--center-right mbr-box__magnet--sm-padding">
                     <div class="mbr-overlay"></div>                        
                         <div class=" container">
@@ -122,24 +122,31 @@
 								      	<c:forEach items="${list}" var="list" varStatus="status">
 								      		<tr>
 	                                			<th>${list.index}</th>
-	                                			<td><a href="${path}/list/details/${list.index}" class="screenshot" 
+	                                			<td><a href="${path}/list/book/details/${list.index}" class="screenshot" 
 	                                			rel="${list.img}" title="${list.content}">${list.title}</a></td>
 	                                			<td>${list.writer}</td>
 	                                			<td>${list.publisher}</td>
-	                                			<td>${list.borrowed_member_index}</td>
+	                                			<c:choose>
+	                                				<c:when test="${list.borrowed_member_index eq 0}">
+	                                					<td class="enabled">대출가능</td>
+	                                				</c:when>
+	                                				<c:otherwise>
+	                                					<td class="disabled">대출중..</td>
+	                                				</c:otherwise>
+	                                			</c:choose>
 	                               			</tr>
 	                                	</c:forEach>
 								      </tbody>
 								    </table>
 								   <nav>
 								      <ul class="pagination" id="bookPage">
-								        <li class="disabled"><a href="#content6-24" aria-label="Previous" style="margin: 0px;"><span aria-hidden="true">«</span></a></li>
-								        <li class="active page"><a href="#content6-24" style="margin: 0px;">1</a></li>
+<!-- 								        <li class="disabled"><a href="#content6-24" aria-label="Previous" style="margin: 0px;"><span aria-hidden="true">«</span></a></li>-->
+								        <li class="page"><a href="#content6-24" style="margin: 0px;">1</a></li>
 								        <c:forEach var="i" begin="2" end="${lastPageNumber}">
-								        	<li class="page"><a href="#content6-24" style="margin: 0px;">${i}</a></li>
+								        	<li id="bookPage${i}" class="page"><a href="#content6-24" style="margin: 0px;">${i}</a></li>
 								        </c:forEach>
 
-								        <li><a href="#" aria-label="Next" style="margin: 0px;"><span aria-hidden="true">»</span></a></li>
+<!-- 								        <li><a href="#" aria-label="Next" style="margin: 0px;"><span aria-hidden="true">»</span></a></li>-->
 								     </ul>
 								   </nav>
                                 </div>
@@ -147,13 +154,50 @@
                         </div>
 
                         <div id="tab2" class="tab-pane fade">
-                            <h3 class="space20">Equpments</h3>
+                            <h3 class="space20">Equipments</h3>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque quis quam in risus pulvinar ultrices eget non sem. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae proin accumsan odio.</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <p>Praesent euismod quis eros a facilisis. Donec magna lacus, consectetur sed tortor in, imperdiet porta nulla. In elementum gravida est, ut porttitor tortor viverra ut. Ut orci justo, maximus nec turpis vel, laoreet finibus elit.</p>
+                                <div class="col-md-12">
+	                                <table class="table table-striped">
+								      <thead>
+								        <tr>
+								          <th style="width:10%;">#</th>
+								          <th style="width:40%;">제목</th>
+								          <th style="width:15%;">저자</th>
+								          <th style="width:15%;">출판사</th>
+								          <th style="width:20%;">대출상태</th>
+								        </tr>
+								      </thead>
+								      <tbody id="equipmentTable">
+								      	<c:forEach items="${list}" var="list" varStatus="status">
+								      		<tr>
+	                                			<th>${list.index}</th>
+	                                			<td><a href="${path}/list/details/${list.index}" class="screenshot" 
+	                                			rel="${list.img}" title="${list.content}">${list.title}</a></td>
+	                                			<td>${list.writer}</td>
+	                                			<td>${list.publisher}</td>
+	                                			<c:choose>
+	                                				<c:when test="${list.borrowed_member_index eq 0}">
+	                                					<td>대출가능</td>
+	                                				</c:when>
+	                                				<c:otherwise>
+	                                					<td>대출중..</td>
+	                                				</c:otherwise>
+	                                			</c:choose>
+	                               			</tr>
+	                                	</c:forEach>
+								      </tbody>
+								    </table>
+								   <nav>
+								      <ul class="pagination" id="bookPage">
+<!-- 								        <li class="disabled"><a href="#content6-24" aria-label="Previous" style="margin: 0px;"><span aria-hidden="true">«</span></a></li>-->
+								        <li class="active page"><a href="#content6-24" style="margin: 0px;">1</a></li>
+								        <c:forEach var="i" begin="2" end="${lastPageNumber}">
+								        	<li class="page"><a href="#content6-24" style="margin: 0px;">${i}</a></li>
+								        </c:forEach>
+
+<!-- 								        <li><a href="#" aria-label="Next" style="margin: 0px;"><span aria-hidden="true">»</span></a></li>-->
+								     </ul>
+								   </nav>
                                 </div>
                             </div>
                         </div>
@@ -194,7 +238,7 @@ function requestBookPage(page) {
 	        for(var i = 0, len = Object.keys(data).length; i < len;i++) {
 	        	code += "<tr>";
 	        	code += "<th>" + data[i][0] + "</th>";
-	        	code += "<td><a href='${path}/list/details/" + data[i][0] + "' class='screenshot' ";
+	        	code += "<td><a href='${path}/list/book/details/" + data[i][0] + "' class='screenshot' ";
 	        	code += "rel='" + data[i][1] + "' title='" + data[i][2] + "'>" + data[i][3] + "</a></td>";
 	        	code += "<td>" + data[i][4] + "</td>";
 	        	code += "<td>" + data[i][5] + "</td>";
@@ -205,7 +249,7 @@ function requestBookPage(page) {
 			console.log(data[5]);
 			screenshotPreview();	// 미리보기 이벤트 등록
 			
-			
+			window.history.replaceState(null, "", "${path}/list/book/" + page);
 	    },
 	    error:function(request,status,error){
 	        alert("code:"+request.status+"\n"+"error:"+error);
@@ -220,6 +264,14 @@ $("#tab1").on("click", ".pagination .page a", function(event) {
 	$(event.target).closest("li").addClass("active");
 });
 
+$(document).ready(function() {
+	var url = (window.location.pathname);
+	var urlSplit = url.split('/');
+	var type = urlSplit[urlSplit.length-2];
+	var page = urlSplit[urlSplit.length-1];
+	
+	$("#" + type + "Page" + page).addClass("active");
+});
 
 </script>
 <script src="${path}/assets/js/main.js"></script>

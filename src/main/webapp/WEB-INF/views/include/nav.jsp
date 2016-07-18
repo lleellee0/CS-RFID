@@ -23,9 +23,9 @@
                     <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown1">
                     <a class="text-white" href="${path}/">Home</a>
-                    <a class="text-white" href="${path}/list">list</a>
-                    <a class="text-white" href="${path}/howtouse">how to use</a>
-                    <a class="text-white" href="${path}/about">about</a></li></ul>
+                    <a class="text-white" href="${path}/list/">list</a>
+                    <a class="text-white" href="${path}/howtouse/">how to use</a>
+                    <a class="text-white" href="${path}/about/">about</a></li></ul>
                 </div>
             </div>
         </nav>
