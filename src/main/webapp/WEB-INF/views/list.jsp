@@ -97,7 +97,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
-                    <div class="section-head text-center space30">
+                    <div class="section-head text-center space30" id="list">
                         <h1>List</h1>
                     </div>
                     <div class="clearfix"></div>
@@ -118,7 +118,7 @@
 								          <th style="width:20%;">대출상태</th>
 								        </tr>
 								      </thead>
-								      <tbody>
+								      <tbody id="bookTable">
 								      	<c:forEach items="${list}" var="list" varStatus="status">
 								      		<tr>
 	                                			<th>${list.index}</th>
@@ -132,13 +132,13 @@
 								      </tbody>
 								    </table>
 								   <nav>
-								      <ul class="pagination">
+								      <ul class="pagination" id="bookPage">
 								        <li class="disabled"><a href="#content6-24" aria-label="Previous" style="margin: 0px;"><span aria-hidden="true">«</span></a></li>
-								        <li class="active"><a href="${path}/list/1#content6-24" style="margin: 0px;">1</a></li>
-								        <li><a href="${path}/list/2#content6-24" style="margin: 0px;">2</a></li>
-								        <li><a href="#" style="margin: 0px;">3</a></li>
-								        <li><a href="#" style="margin: 0px;">4</a></li>
-								        <li><a href="#" style="margin: 0px;">5</a></li>
+								        <li class="active page"><a href="#content6-24" style="margin: 0px;">1</a></li>
+								        <c:forEach var="i" begin="2" end="${lastPageNumber}">
+								        	<li class="page"><a href="#content6-24" style="margin: 0px;">${i}</a></li>
+								        </c:forEach>
+
 								        <li><a href="#" aria-label="Next" style="margin: 0px;"><span aria-hidden="true">»</span></a></li>
 								     </ul>
 								   </nav>
@@ -180,6 +180,47 @@ $(".pagination li a span").on("mouseover", function(event) {
 $(".pagination li a span").on("mouseout", function(event) {
 	$($(event.target).closest("a")).css("margin", "0px");
 });
+
+function requestBookPage(page) {
+	$.ajax({
+	    url : "${path}/list",
+	    dataType : "json",
+	    type : "post",
+	    data : {"page":page, "type":"book"},
+	    success: function(data) {
+	        $('#bookTable').empty();
+	        var code = "";
+	        console.log(Object.keys(data).length);
+	        for(var i = 0, len = Object.keys(data).length; i < len;i++) {
+	        	code += "<tr>";
+	        	code += "<th>" + data[i][0] + "</th>";
+	        	code += "<td><a href='${path}/list/details/" + data[i][0] + "' class='screenshot' ";
+	        	code += "rel='" + data[i][1] + "' title='" + data[i][2] + "'>" + data[i][3] + "</a></td>";
+	        	code += "<td>" + data[i][4] + "</td>";
+	        	code += "<td>" + data[i][5] + "</td>";
+	        	code += "<td>" + data[i][6] + "</td>";
+	        	code += "</tr>"
+	        }
+			$('#bookTable').html(code);
+			console.log(data[5]);
+			screenshotPreview();	// 미리보기 이벤트 등록
+			
+			
+	    },
+	    error:function(request,status,error){
+	        alert("code:"+request.status+"\n"+"error:"+error);
+	    }
+	}); 
+}
+
+$("#tab1").on("click", ".pagination .page a", function(event) {
+	console.log("책 페이지 이벤트 발생");
+	requestBookPage($(event.target).text());
+	$(".pagination li").removeClass("active");
+	$(event.target).closest("li").addClass("active");
+});
+
+
 </script>
 <script src="${path}/assets/js/main.js"></script>
 

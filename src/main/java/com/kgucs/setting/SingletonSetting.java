@@ -12,7 +12,7 @@ public class SingletonSetting {
 	private String userName = "root";
 	private String userPassword = "rfid123"; // Clab에 있는 노트북
 	
-	private int pageSize = 20;
+	private int pageSize = 15;
 	
 	
 	
