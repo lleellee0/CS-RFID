@@ -146,4 +146,44 @@ public class EquipmentDao {
 
 		return (count/pageSize) + 1;
 	}
+	
+	public int getCount() {
+		sql = new StringBuffer();
+		sql.append("SELECT count(*) FROM ");
+		sql.append("equipment");
+		
+		new AbstractDao() {
+			@Override
+			public void query() throws Exception {
+				pstmt = con.prepareStatement(sql.toString());
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					count = rs.getInt(1);
+				}
+			}
+		}.execute();
+
+		return count;
+	}
+	
+	public int getUsedCount() {
+		sql = new StringBuffer();
+		sql.append("SELECT count(*) FROM ");
+		sql.append("equipment WHERE borrowed_member_index <> 0");
+		
+		new AbstractDao() {
+			@Override
+			public void query() throws Exception {
+				pstmt = con.prepareStatement(sql.toString());
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					count = rs.getInt(1);
+				}
+			}
+		}.execute();
+
+		return count;
+	}
 }

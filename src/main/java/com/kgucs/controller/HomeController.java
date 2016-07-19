@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kgucs.dao.book.BookDao;
 import com.kgucs.dao.book.BookVo;
+import com.kgucs.dao.equipment.EquipmentDao;
 import com.kgucs.dao.member.MemberDao;
 import com.kgucs.dao.member.MemberVo;
 import com.kgucs.setting.SingletonSetting;
@@ -42,11 +43,19 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
 		SingletonSetting ssi = SingletonSetting.getInstance();
 		ssi.setAllParameter(model);
+		
+		MemberDao memberDao = new MemberDao();
+		model.addAttribute("memberCount", memberDao.getCount());
+		
+		BookDao bookDao = new BookDao();
+		model.addAttribute("bookCount", bookDao.getCount());
+		model.addAttribute("bookUsedCount", bookDao.getUsedCount());
+		
+		EquipmentDao equipmentDao = new EquipmentDao();
+		model.addAttribute("equipmentCount", equipmentDao.getCount());
+		model.addAttribute("equipmentUsedCount", equipmentDao.getUsedCount());
 
 		return "index";
 	}

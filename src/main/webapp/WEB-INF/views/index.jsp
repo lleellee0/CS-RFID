@@ -112,28 +112,28 @@
                 <div class="col-md-3 col-sm-3">
                     <div class="stats2-info">
                         <i class="fa fa-user"></i>
-                        <p><span class="count">899</span></p>
+                        <p><span class="count">${memberCount}</span></p>
                         <h2>Users</h2>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3">
                     <div class="stats2-info">
                         <i class="fa fa-book"></i>
-                        <p><span class="count">1783</span></p>
+                        <p><span class="count">${bookCount}</span></p>
                         <h2>BOOKS</h2>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3">
                     <div class="stats2-info">
                         <i class="fa fa-cogs"></i>
-                        <p><span class="count">1247</span></p>
+                        <p><span class="count">${equipmentCount}</span></p>
                         <h2>equipments</h2>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-3">
                     <div class="stats2-info">
                         <i class="fa fa-play-circle"></i>
-                        <p><span class="count">3777</span>/<span class="count">1234</span></p>
+                        <p><span class="count">${bookUsedCount}</span>/<span class="count">${equipmentUsedCount}</span></p>
                         <h2>in use(book/equipment)</h2>
                     </div>
                 </div>

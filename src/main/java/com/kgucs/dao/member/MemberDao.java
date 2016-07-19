@@ -3,8 +3,9 @@ package com.kgucs.dao.member;
 import com.kgucs.dao.AbstractDao;
 
 public class MemberDao {
-	final StringBuffer sql = new StringBuffer();
+	StringBuffer sql = new StringBuffer();
 	final MemberVo mv = new MemberVo();
+	int count = 0;
 	
 	public void insert(final MemberVo vo) throws Exception {
 		sql.append("INSERT INTO member ");
@@ -78,5 +79,25 @@ public class MemberDao {
 			}
 		}.execute();
 		return mv;
+	}
+	
+	public int getCount() {
+		sql = new StringBuffer();
+		sql.append("SELECT count(*) FROM ");
+		sql.append("member");
+		
+		new AbstractDao() {
+			@Override
+			public void query() throws Exception {
+				pstmt = con.prepareStatement(sql.toString());
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					count = rs.getInt(1);
+				}
+			}
+		}.execute();
+
+		return count;
 	}
 }
