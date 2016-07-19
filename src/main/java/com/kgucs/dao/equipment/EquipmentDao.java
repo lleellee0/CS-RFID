@@ -63,6 +63,33 @@ public class EquipmentDao {
 		return mv;
 	}
 	
+	public EquipmentVo selectByRfid(final int rfid) {
+		sql = new StringBuffer();
+		sql.append("SELECT * FROM ");
+		sql.append("equipment WHERE ");
+		sql.append("rfid=?");
+		
+		new AbstractDao() {
+			@Override
+			public void query() throws Exception {
+				pstmt = con.prepareStatement(sql.toString());
+				pstmt.setInt(1, rfid);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					mv.setIndex(rs.getInt(1));
+					mv.setRfid(rs.getInt(2));
+					mv.setTitle(rs.getString(3));
+					mv.setContent(rs.getString(4));
+					mv.setImg(rs.getString(5));
+					mv.setBorrowed_member_index(rs.getInt(6));
+					mv.setDue_date(rs.getString(7));
+				}
+			}
+		}.execute();
+		return mv;
+	}
+	
 	public List<EquipmentVo> selectByPage(final int page) {
 		sql = new StringBuffer();
 		sql.append("SELECT * FROM ");

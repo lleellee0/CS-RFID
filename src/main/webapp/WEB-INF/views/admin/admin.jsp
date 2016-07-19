@@ -74,7 +74,7 @@
     </div>
 </section>
 
-<section class="mbr-section--bg-adapted mbr-section--relative" id="counters2-8" style="background-color: #550044;">
+<section class="mbr-section--bg-adapted mbr-section--relative" id="counters2-9" style="background-color: #550044;">
     <div id="stats2" class="bg-dark" style="padding-top: 120px; padding-bottom: 120px;">
         
         <div class="container">

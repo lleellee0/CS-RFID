@@ -12,7 +12,7 @@ public class BookDao {
 	final List<BookVo> list = new ArrayList<BookVo>();
 	int count = 0;
 	
-	public void insert(final BookVo vo) throws Exception {
+	public void insert(final BookVo vo) {
 		sql = new StringBuffer();
 		sql.append("INSERT INTO book ");
 		sql.append("(rfid, title, writer, publisher, content, img, borrowed_member_index) ");
@@ -49,6 +49,38 @@ public class BookDao {
 			public void query() throws Exception {
 				pstmt = con.prepareStatement(sql.toString());
 				pstmt.setInt(1, index);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					mv.setIndex(rs.getInt(1));
+					mv.setRfid(rs.getInt(2));
+					mv.setTitle(rs.getString(3));
+					mv.setWriter(rs.getString(4));
+					mv.setPublisher(rs.getString(5));
+					mv.setContent(rs.getString(6));
+					mv.setImg(rs.getString(7));
+					mv.setBorrowed_member_index(rs.getInt(8));
+					mv.setDue_date(rs.getString(9));
+				}
+			}
+		}.execute();
+		return mv;
+	}
+	
+	public BookVo selectByRfid(final int rfid) {
+		/*
+		 * 파라미터에 final이 붙는 이유 http://devbible.tistory.com/30
+		 */
+		sql = new StringBuffer();
+		sql.append("SELECT * FROM ");
+		sql.append("book WHERE ");
+		sql.append("rfid=?");
+		
+		new AbstractDao() {
+			@Override
+			public void query() throws Exception {
+				pstmt = con.prepareStatement(sql.toString());
+				pstmt.setInt(1, rfid);
 				rs = pstmt.executeQuery();
 				
 				while(rs.next()) {
