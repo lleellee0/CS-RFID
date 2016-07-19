@@ -351,7 +351,6 @@ $("#equipmentTabButton a").on("click", function(event) {
 //	$("#bookTab .pagination li").removeClass("active");
 //	$(event.target).closest("li").addClass("active");
 });
-
 </script>
 <script src="${path}/assets/js/main.js"></script>
 
