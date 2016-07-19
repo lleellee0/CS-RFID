@@ -14,7 +14,7 @@
 <body>
 <%@include file="include/nav.jsp" %>
 
-<section class="mbr-section--bg-adapted mbr-after-navbar" id="header15-4" style="background-image: url(assets/images/4.jpg);">
+<section class="mbr-section--bg-adapted mbr-after-navbar" id="header15-4" style="background-image: url(${path}/assets/images/4.jpg);">
     <div class="intro intro4" style="padding-top: 220px; padding-bottom: 0px;">
         <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(0, 0, 0);"></div>
         <div class="container">
@@ -29,7 +29,7 @@
             </div>
 
             <div class="intro4-image container">
-                <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom"><img src="assets/images/9.png" class="mbr-figure__img img-responsive center-block"></figure>
+                <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom"><img src="${path}/assets/images/9.png" class="mbr-figure__img img-responsive center-block"></figure>
             </div>
         </div>
     </div>

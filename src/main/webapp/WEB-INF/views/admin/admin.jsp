@@ -15,7 +15,7 @@
 <%@include file="../include/nav.jsp" %>
 
 <section id="header6-0">
-    <div class="intro intro12" style="background-image: url(../assets/images/3.jpg);">
+    <div class="intro intro12" style="background-image: url(${path}/assets/images/3.jpg);">
         <div class="overlay"></div>
         <div class="container">
             <div class="row center-content">

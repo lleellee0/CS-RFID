@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <section id="menu-13">
 
         <nav class="navbar-inverse navbar-lg navbar-fixed-top">
@@ -22,6 +23,16 @@
                     
                     <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown1">
+                    <c:choose>
+                    	<c:when test="${sessionScope.memberVo eq null}">
+                    		<a href="${path}/login" style="color:#ffcc00">Login</a>
+                    	</c:when>
+                    	<c:otherwise>
+                    		<a class="text-white" href="${path}/profile">Profile</a>
+                    		<a class="text-white" href="${path}/logout">Logout</a>
+                    	</c:otherwise>
+                    </c:choose>
+                    <a></a><!-- 네비게이션 바 간격주기 -->
                     <a class="text-white" href="${path}/">Home</a>
                     <a class="text-white" href="${path}/list/book/1">list</a>
                     <a class="text-white" href="${path}/howtouse/">how to use</a>
