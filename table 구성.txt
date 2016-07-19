@@ -27,7 +27,7 @@ name (varchar(30))
 is_admin (boolean)
 
 
-로그(log)
+로그(action_log)
 index (int) auto_increment
 type (varchar(20)) 'book', 'equipment'
 type_index int
@@ -69,4 +69,13 @@ create table `equipment` (
 	`img` varchar(255),
 	`borrowed_member_index` int,
 	`due_date` datetime default current_timestamp
+);
+
+create table `action_log` (
+	`index` int primary key auto_increment,
+	`type` varchar(20),
+	`type_index` int,
+	`action` varchar(20),
+	`member_index` int,
+	`action_date` datetime default current_timestamp
 );
