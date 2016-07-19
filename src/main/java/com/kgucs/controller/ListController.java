@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.kgucs.dao.actionlog.ActionLogDao;
 import com.kgucs.dao.book.BookDao;
 import com.kgucs.dao.book.BookVo;
 import com.kgucs.dao.equipment.EquipmentDao;
@@ -60,6 +61,10 @@ public class ListController {
 		model.addAttribute("equipmentList", equipmentDao.selectByPage(page));
 		model.addAttribute("equipmentLastPageNumber", equipmentDao.getLastPageNumber());
 		
+		ActionLogDao actionLogDao = new ActionLogDao();
+		
+		model.addAttribute("topThreeBooksList", actionLogDao.selectTopThreeBooks());
+		
 		return "list";
 	}
 	
@@ -82,6 +87,10 @@ public class ListController {
 
 		model.addAttribute("equipmentList", equipmentDao.selectByPage(page));
 		model.addAttribute("equipmentLastPageNumber", equipmentDao.getLastPageNumber());
+		
+		ActionLogDao actionLogDao = new ActionLogDao();
+		
+		model.addAttribute("topThreeBooksList", actionLogDao.selectTopThreeBooks());
 
 		return "list";
 	}

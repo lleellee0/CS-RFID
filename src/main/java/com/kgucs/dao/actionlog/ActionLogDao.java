@@ -136,7 +136,7 @@ public class ActionLogDao {
 		 */
 		
 		sql.append("SELECT result2.* FROM ");
-		sql.append("SELECT type_index, count(*) as count FROM action_log ");
+		sql.append("(SELECT type_index, count(*) as count FROM action_log ");
 		sql.append("WHERE type='book' GROUP BY type_index ORDER BY count(*) DESC LIMIT 3) ");
 		sql.append("result1 LEFT JOIN (SELECT * FROM book) result2 ON result1.type_index = result2.index ");
 		sql.append("GROUP BY result1.type_index ORDER BY count DESC");

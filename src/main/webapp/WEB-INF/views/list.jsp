@@ -36,14 +36,19 @@
                         <div class=" container">
                             
                             <div class="row">
-                                <div class=" col-md-6 col-md-offset-1">  
+                                <div class="col-md-9">  
 
                                 <div class="mbr-hero">
-                                    <h1 class="mbr-hero__text">추천도서를 적어주자</h1>
-
-                                    <p class="mbr-hero__subtext">Develop fully responsive, mobile-optimized websites that look amazing on any devices and browsers. Preview how your website will appear on phones, tablets and desktops directly in the visual editor.</p>
+                                    <h1 class="mbr-hero__text">${topThreeBooksList[0].title}</h1>
+									<h2 class="mbr-hero__subtext">${topThreeBooksList[0].writer}/${topThreeBooksList[0].publisher}</h2>
+                                    <p class="mbr-hero__subtext">${topThreeBooksList[0].content}</p>
                                 </div>
-                                <div class="mbr-buttons btn-inverse mbr-buttons--left"><a class="mbr-buttons__btn btn btn-lg btn-primary" href="https://mobirise.com">FOR WINDOWS</a> <a class="mbr-buttons__btn btn btn-lg btn-default" href="https://mobirise.com">FOR MAC</a></div>
+                                <div class="mbr-buttons btn-inverse mbr-buttons--left">
+                                	<a class="mbr-buttons__btn btn btn-lg btn-primary" href="${path}/list/book/details/${topThreeBooksList[0].index}">Details</a>
+                                </div>
+                                </div>
+                                <div class="col-md-3">
+                                	<img src="${topThreeBooksList[0].img}" style="width:100%;">
                                 </div>
                             </div>
                         </div>
@@ -54,15 +59,22 @@
                         <div class=" container">
                             
                             <div class="row">
-                                <div class=" col-md-8 col-md-offset-2">  
+                            	<div class="col-md-3">
+                                	<img src="${topThreeBooksList[1].img}" style="width:100%;">
+                                </div>
+                            
+                                <div class=" col-md-9">  
 
                                 <div class="mbr-hero">
-                                    <h1 class="mbr-hero__text">Slide 2</h1>
-
-                                    <p class="mbr-hero__subtext">Mobirise is based on Bootstrap 3 - most powerful mobile first framework. Use any bootstrap themes with no extra work.</p>
+                                    <h1 class="mbr-hero__text">${topThreeBooksList[1].title}</h1>
+									<h2 class="mbr-hero__subtext">${topThreeBooksList[1].writer}/${topThreeBooksList[1].publisher}</h2>
+                                    <p class="mbr-hero__subtext">${topThreeBooksList[1].content}</p>
                                 </div>
-                                <div class="mbr-buttons btn-inverse mbr-buttons--center"><a class="mbr-buttons__btn btn btn-lg btn-primary" href="https://mobirise.com">FOR WINDOWS</a> <a class="mbr-buttons__btn btn btn-lg btn-default" href="https://mobirise.com">FOR MAC</a></div>
+                                <div class="mbr-buttons btn-inverse mbr-buttons--center">
+                                	<a class="mbr-buttons__btn btn btn-lg btn-primary" href="${path}/list/book/details/${topThreeBooksList[1].index}">Details</a>
                                 </div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -72,14 +84,17 @@
                         <div class=" container">
                             
                             <div class="row">
-                                <div class=" col-md-6 col-md-offset-5">  
+                                <div class=" col-md-9">  
 
                                 <div class="mbr-hero">
-                                    <h1 class="mbr-hero__text">Slide 3</h1>
-
-                                    <p class="mbr-hero__subtext">Choose from the large selection of latest pre-made blocks - hero images, parallax scrolling, video backgrounds, hamburger menu, sticky header and more.</p>
+                                    <h1 class="mbr-hero__text">${topThreeBooksList[2].title}</h1>
+									<h2 class="mbr-hero__subtext">${topThreeBooksList[2].writer}/${topThreeBooksList[2].publisher}</h2>
+                                    <p class="mbr-hero__subtext">${topThreeBooksList[2].content}</p>
                                 </div>
-                                <div class="mbr-buttons btn-inverse mbr-buttons--left mbr-buttons--right"><a class="mbr-buttons__btn btn btn-lg btn-primary" href="https://mobirise.com">FOR WINDOWS</a> <a class="mbr-buttons__btn btn btn-lg btn-default" href="https://mobirise.com">FOR MAC</a></div>
+                                <div class="mbr-buttons btn-inverse mbr-buttons--left mbr-buttons--right"><a class="mbr-buttons__btn btn btn-lg btn-primary" href="${path}/list/book/details/${topThreeBooksList[2].index}">Details</a></div>
+                                </div>
+                                <div class="col-md-3">
+                                	<img src="${topThreeBooksList[2].img}" style="width:100%;">
                                 </div>
                             </div>
                         </div>
