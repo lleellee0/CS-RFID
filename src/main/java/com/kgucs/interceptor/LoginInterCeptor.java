@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.kgucs.dao.member.MemberVo;
 import com.kgucs.setting.SingletonSetting;
 
 public class LoginInterCeptor extends HandlerInterceptorAdapter {
@@ -16,9 +17,11 @@ public class LoginInterCeptor extends HandlerInterceptorAdapter {
 		session.setAttribute("whereToGo", request.getRequestURI());
 		// 로그인에 성공하면 이동해야할 곳(사용자가 가려고 했던 곳)의 URL 저장.
 		
+		MemberVo memberVo = (MemberVo) request.getSession().getAttribute("memberVo");
+		
 		try {
 			// logininfo 세션값이 널일경우
-			if ((request.getSession().getAttribute("memberVo")) == null) {
+			if (memberVo == null) {
 				// 로그인페이지로 redirect
 				SingletonSetting ssi = SingletonSetting.getInstance();
 				response.sendRedirect(ssi.getPath() + "/login");
