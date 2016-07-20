@@ -1,9 +1,5 @@
 package com.kgucs.controller;
 
-import java.io.IOException;
-import java.sql.SQLException;
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,9 +29,6 @@ public class AdminController {
 	public String admin(Locale locale, Model model) {
 		logger.info("admin Page!! The client locale is {}.", locale);
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
 		SingletonSetting ssi = SingletonSetting.getInstance();
 		ssi.setAllParameter(model);
 		

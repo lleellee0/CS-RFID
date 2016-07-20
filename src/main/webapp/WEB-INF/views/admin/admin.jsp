@@ -66,12 +66,12 @@
 						            </fieldset>    
 						        </form>
 						    </div>
-                        </p>
+                        
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    
 </section>
 
 <section class="mbr-section--bg-adapted mbr-section--relative" id="counters2-9" style="background-color: #550044;">
@@ -103,12 +103,12 @@
 						            </fieldset>    
 						        </form>
 						    </div>
-                        </p>
+                        
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    
 </section>
 
 <%@include file="../include/footer.jsp" %>

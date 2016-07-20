@@ -1,8 +1,6 @@
 package com.kgucs.controller;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;

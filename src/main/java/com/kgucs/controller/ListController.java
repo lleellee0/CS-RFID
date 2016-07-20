@@ -1,7 +1,5 @@
 package com.kgucs.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -45,9 +43,6 @@ public class ListController {
 	public String listEquipmenmt(Locale locale, Model model, @PathVariable("page") int page) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
 		SingletonSetting ssi = SingletonSetting.getInstance();
 		ssi.setAllParameter(model);
 
@@ -71,9 +66,6 @@ public class ListController {
 	@RequestMapping(value = "/list/book/{page}", method = RequestMethod.GET)
 	public String list(Locale locale, Model model, @PathVariable("page") int page) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 
 		SingletonSetting ssi = SingletonSetting.getInstance();
 		ssi.setAllParameter(model);
@@ -163,9 +155,6 @@ public class ListController {
 	public String bookDetails(Locale locale, Model model, @PathVariable("index") int index) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
 		SingletonSetting ssi = SingletonSetting.getInstance();
 		ssi.setAllParameter(model);
 		
@@ -186,9 +175,6 @@ public class ListController {
 	@RequestMapping(value = "/list/equipment/details/{index}", method = RequestMethod.GET)
 	public String equipmentDetails(Locale locale, Model model, @PathVariable("index") int index) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 
 		SingletonSetting ssi = SingletonSetting.getInstance();
 		ssi.setAllParameter(model);

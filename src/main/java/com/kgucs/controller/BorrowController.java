@@ -1,7 +1,5 @@
 package com.kgucs.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -21,9 +19,6 @@ public class BorrowController {
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-
 		SingletonSetting ssi = SingletonSetting.getInstance();
 		ssi.setAllParameter(model);
 		
