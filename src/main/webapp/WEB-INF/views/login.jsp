@@ -192,7 +192,7 @@ textarea {
 <%@include file="include/nav.jsp" %>
 
 <section id="header2-2" style="height:100%;">
-    <div class="intro intro7" style="background-image: url(assets/images/7.jpg); height:100%;">
+    <div class="intro intro7" style="background-image: url(${path}/assets/images/7.jpg); height:100%;">
         <div class="overlay"></div>
         <div class="container" style="height:100%;">
             <div class="row center-content center-content-ipad">
