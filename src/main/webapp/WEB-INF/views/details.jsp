@@ -60,7 +60,7 @@
 								</c:otherwise>
 							</c:choose>
 							${errorMessage}
-                            <p>${details.content}</p>
+                            <p><c:out value="${details.content}"/></p>
                             <div class="space30"></div>
 <!--                             <div><a class="btn btn-primary">Check video</a></div> -->
                         </div>

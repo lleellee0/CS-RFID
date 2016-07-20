@@ -28,6 +28,9 @@
                     		<a href="${path}/login" style="color:#ffcc00">Login</a>
                     	</c:when>
                     	<c:otherwise>
+                    		<c:if test="${sessionScope.memberVo.member_level eq 10}">
+                    			<a href="${path}/admin/admin" style="color:#ff0000">admin</a>
+                    		</c:if>
                     		<a class="text-white" href="${path}/profile">Profile</a>
                     		<a class="text-white" href="${path}/logout">Logout</a>
                     	</c:otherwise>
