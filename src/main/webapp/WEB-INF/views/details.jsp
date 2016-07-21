@@ -28,12 +28,12 @@
                 <div class="col-md-12">
                     <div class="row center-content">
                         <div class="col-md-4" style="padding-top:15px;padding-bottom:15px;">
-                            	<img src="${details.img}" style="width:100%;">
+                            	<img src='<c:out value="${details.img}"/>' style="width:100%;">
                         </div>
                         <div class="col-md-8">
-                            <h2 class="text-uppercase space20">${details.title}</h2>
+                            <h2 class="text-uppercase space20"><c:out value="${details.title}"/></h2>
                             <c:if test="${type eq 'book'}">
-                            	<h3 class="space20">${details.writer}/${details.publisher}</h3>
+                            	<h3 class="space20"><c:out value="${details.writer}/${details.publisher}"/></h3>
                             </c:if>
                             
                             
@@ -51,15 +51,15 @@
 								<c:otherwise>
 									<c:choose>
 										<c:when test="${type eq 'book'}">
-											<h4 class="space30 disabled">대출중(${memberVo.std_number}, ${memberVo.name})</h4>
+											<h4 class="space30 disabled">대출중(<c:out value="${memberVo.std_number}, ${memberVo.name}"/>)</h4>
 										</c:when>
 										<c:otherwise>
-											<h4 class="space30 disabled">대여중(${memberVo.std_number}, ${memberVo.name})</h4>
+											<h4 class="space30 disabled">대여중(<c:out value="${memberVo.std_number}, ${memberVo.name}"/>)</h4>
 										</c:otherwise>
 									</c:choose>
 								</c:otherwise>
 							</c:choose>
-							${errorMessage}
+							<c:out value="${errorMessage}"/>
                             <p><c:out value="${details.content}"/></p>
                             <div class="space30"></div>
 <!--                             <div><a class="btn btn-primary">Check video</a></div> -->

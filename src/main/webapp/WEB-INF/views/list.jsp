@@ -146,11 +146,11 @@
 								      <tbody id="bookTable">
 								      	<c:forEach items="${bookList}" var="list" varStatus="status">
 								      		<tr>
-	                                			<th>${list.index}</th>
+	                                			<th><c:out value="${list.index}"/></th>
 	                                			<td><a href="${path}/list/book/details/${list.index}" class="screenshot" 
-	                                			rel="${list.img}" title="${list.content}">${list.title}</a></td>
-	                                			<td>${list.writer}</td>
-	                                			<td>${list.publisher}</td>
+	                                			rel="${list.img}" title='<c:out value="${list.content}"/>'><c:out value="${list.title}"/></a></td>
+	                                			<td><c:out value="${list.writer}"/></td>
+	                                			<td><c:out value="${list.publisher}"/></td>
 	                                			<c:choose>
 	                                				<c:when test="${list.borrowed_member_index eq 0}">
 	                                					<td class="enabled">대출가능</td>
@@ -167,7 +167,7 @@
 								      <ul class="pagination" id="bookPage">
 <!-- 								        <li class="disabled"><a href="#content6-24" aria-label="Previous" style="margin: 0px;"><span aria-hidden="true">«</span></a></li>-->
 								        <c:forEach var="i" begin="1" end="${bookLastPageNumber}">
-								        	<li id="bookPage${i}" class="page"><a href="#content6-24" style="margin: 0px;">${i}</a></li>
+								        	<li id="bookPage${i}" class="page"><a href="#content6-24" style="margin: 0px;"><c:out value="${i}"/></a></li>
 								        </c:forEach>
 
 <!-- 								        <li><a href="#" aria-label="Next" style="margin: 0px;"><span aria-hidden="true">»</span></a></li>-->
@@ -192,9 +192,9 @@
 								      <tbody id="equipmentTable">
 								      	<c:forEach items="${equipmentList}" var="list" varStatus="status">
 								      		<tr>
-	                                			<th>${list.index}</th>
+	                                			<th><c:out value="${list.index}"/></th>
 	                                			<td><a href="${path}/list/equipment/details/${list.index}" class="screenshot" 
-	                                			rel="${list.img}" title="${list.content}">${list.title}</a></td>
+	                                			rel="${list.img}" title='<c:out value="${list.content}"/>'><c:out value="${list.title}"/></a></td>
 	                                			<c:choose>
 	                                				<c:when test="${list.borrowed_member_index eq 0}">
 	                                					<td class="enabled">대여가능</td>
@@ -211,7 +211,7 @@
 								      <ul class="pagination" id="equipmentPage">
 <!-- 								        <li class="disabled"><a href="#content6-24" aria-label="Previous" style="margin: 0px;"><span aria-hidden="true">«</span></a></li>-->
 								        <c:forEach var="i" begin="1" end="${equipmentLastPageNumber}">
-								        	<li id="equipmentPage${i}" class="page"><a href="#content6-24" style="margin: 0px;">${i}</a></li>
+								        	<li id="equipmentPage${i}" class="page"><a href="#content6-24" style="margin: 0px;"><c:out value="${i}"/></a></li>
 								        </c:forEach>
 
 <!-- 								        <li><a href="#" aria-label="Next" style="margin: 0px;"><span aria-hidden="true">»</span></a></li>-->
