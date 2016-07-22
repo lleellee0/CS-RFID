@@ -110,6 +110,33 @@
         </div>    
 </section>
 
+<section class="mbr-section--bg-adapted mbr-section--relative mbr-after-navbar" id="msg-box11-35" style="background-color: rgb(51, 106, 134);">
+    <div class="article elements-content" style="padding-top: 100px; padding-bottom: 100px;">
+        
+        <div class="container">
+            <div class="row">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="text-uppercase space20" style="color:#ffffff;">관리자에게 드리는 당부의 말씀</h2>
+                        </div>
+                    </div>
+                    <div class="row space20">
+                    	<p>1. <span style="color:#ff5555">개인정보</span>는 반드시 보호되어야 합니다. 관리자로서 사명감을 가지고 이를 지켜주세요.</p>
+                    	<p>2. 보안 취약점이 있다면 반드시 제작자(이준형)에게 연락바랍니다.</p>
+                    	<p>3. 도서 및 기자재의 내용은 수정이 가능합니다. 하지만 삭제는 기능을 구현하지 않았습니다. 삭제를 위해선 콘솔창에서 데이터베이스에 직접 쿼리를 작성해야합니다.
+                    	그 정도는 할 수 있을 거라고 믿습니다. 반드시 지켜야 할 것은 <span style="color:#ff5555">DELETE 쿼리를 날리기 전에는 반드시
+                    	 SELECT 쿼리를 먼저 작성하여 지금 삭제하려는 그 레코드가 조건에 맞게 선택이 되었는지 먼저 확인해야합니다.</span>
+                    	  꼭 지켜주세요! 소중한 데이터가 날아갈 수 있습니다.</p>
+                    	<p>4. 회원탈퇴는 지원하지 않으려고 합니다. 그 이유는 <span style="color:#ff5555">대출자에 대한 추적이 어려워지며 데이터베이스에서 
+                    	값을 찾아오지 못하는 문제가 발생하기 때문입니다.</span>비슷한 이유로 도서 및 기자재에 대한 DELETE 역시 신중하게 하시고 DELETE한 장비는 action_log 
+                    	테이블에서 없애버리세요. action_log 테이블에서 해당 레코드를 삭제하는 작업은 3번 사항을 반드시 준수해주시기 바랍니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 <%@include file="../include/footer.jsp" %>
 <%@include file="../include/script.jsp" %>
 

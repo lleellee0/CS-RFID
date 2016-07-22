@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.kgucs.dao.AbstractDao;
 import com.kgucs.dao.book.BookVo;
-import com.kgucs.setting.SingletonSetting;
 
 public class ActionLogDao {
 	StringBuffer sql = null;
