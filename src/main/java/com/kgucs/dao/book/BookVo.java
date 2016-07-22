@@ -27,6 +27,18 @@ public class BookVo {
 		this.due_date = due_date;
 	}
 	
+	public BookVo(int index, int rfid, String title, String writer, String publisher,
+			String content, String img) {
+		super();
+		this.index = index;
+		this.rfid = rfid;
+		this.title = title;
+		this.writer = writer;
+		this.publisher = publisher;
+		this.content = content;
+		this.img = img;
+	}
+	
 	public BookVo(int rfid, String title, String writer, String publisher, String content,
 			String img, int borrowed_member_index, String due_date) {
 		super();

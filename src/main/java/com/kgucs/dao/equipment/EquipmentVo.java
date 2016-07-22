@@ -23,6 +23,16 @@ public class EquipmentVo {
 		this.due_date = due_date;
 	}
 	
+	public EquipmentVo(int index, int rfid, String title,
+			String content, String img) {
+		super();
+		this.index = index;
+		this.rfid = rfid;
+		this.title = title;
+		this.content = content;
+		this.img = img;
+	}
+	
 	public EquipmentVo(int rfid, String title, String content,
 			String img, int borrowed_member_index, String due_date) {
 		super();

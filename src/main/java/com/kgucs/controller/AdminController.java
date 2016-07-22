@@ -138,4 +138,78 @@ public class AdminController {
 
 		return "details";
 	}
+	
+	@RequestMapping(value = "/admin/book/edit/{index}", method = RequestMethod.GET)
+	public String bookEditForm(Locale locale, Model model,@PathVariable("index") int index, 
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// 수정하고나서 다시 Details로 돌아갈 수 있도록 하기 위해.
+		request.getSession().setAttribute("whereToGo", request.getHeader("referer"));
+		
+		SingletonSetting ssi = SingletonSetting.getInstance();
+		ssi.setAllParameter(model);
+		
+		BookDao dao = new BookDao();
+		BookVo vo = dao.selectByIndex(index);
+		
+		model.addAttribute("details", vo);
+
+		return "admin/book_edit";
+	}
+	
+	@RequestMapping(value = "/admin/book/edit/{index}", method = RequestMethod.POST)
+	public String bookEdit(Locale locale, Model model,@PathVariable("index") int index, 
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		SingletonSetting ssi = SingletonSetting.getInstance();
+		ssi.setAllParameter(model);
+		
+		BookDao dao = new BookDao();
+		BookVo vo = new BookVo(index, Integer.parseInt(request.getParameter("rfid")),
+				request.getParameter("title"),
+				request.getParameter("writer"),
+				request.getParameter("publisher"),
+				request.getParameter("content"),
+				request.getParameter("img")
+		);
+		
+		dao.update(vo);
+
+		model.addAttribute("script", "location.replace('" + ssi.getPath() + "/list/book/details/" + index +"');");		// 뒤로가기하면 Edit 창이 뜬당..
+		return "script";
+	}
+	
+	@RequestMapping(value = "/admin/equipment/edit/{index}", method = RequestMethod.GET)
+	public String equipmentEditForm(Locale locale, Model model,@PathVariable("index") int index, 
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// 수정하고나서 다시 Details로 돌아갈 수 있도록 하기 위해.
+		request.getSession().setAttribute("whereToGo", request.getHeader("referer"));
+		
+		SingletonSetting ssi = SingletonSetting.getInstance();
+		ssi.setAllParameter(model);
+		
+		EquipmentDao dao = new EquipmentDao();
+		EquipmentVo vo = dao.selectByIndex(index);
+		
+		model.addAttribute("details", vo);
+
+		return "admin/equipment_edit";
+	}
+	
+	@RequestMapping(value = "/admin/equipment/edit/{index}", method = RequestMethod.POST)
+	public String equipmentEdit(Locale locale, Model model,@PathVariable("index") int index, 
+			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		SingletonSetting ssi = SingletonSetting.getInstance();
+		ssi.setAllParameter(model);
+		
+		EquipmentDao dao = new EquipmentDao();
+		EquipmentVo vo = new EquipmentVo(index, Integer.parseInt(request.getParameter("rfid")),
+				request.getParameter("title"),
+				request.getParameter("content"),
+				request.getParameter("img")
+		);
+		
+		dao.update(vo);
+
+		model.addAttribute("script", "location.replace('" + ssi.getPath() + "/list/equipment/details/" + index +"');");		// 뒤로가기하면 Edit 창이 뜬당..
+		return "script";
+	}
 }

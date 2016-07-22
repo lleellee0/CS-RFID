@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -12,11 +11,7 @@ import com.kgucs.dao.member.MemberVo;
 import com.kgucs.setting.SingletonSetting;
 
 public class AdminInterCeptor extends HandlerInterceptorAdapter {
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
-		HttpSession session = request.getSession();
-		session.setAttribute("whereToGo", request.getRequestURI());
-		// 로그인에 성공하면 이동해야할 곳(사용자가 가려고 했던 곳)의 URL 저장.
-		
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {	
 		MemberVo memberVo = (MemberVo) request.getSession().getAttribute("memberVo");
 		
 		try {

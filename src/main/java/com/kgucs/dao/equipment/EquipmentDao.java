@@ -33,6 +33,27 @@ public class EquipmentDao {
 		}.execute();
 	}
 	
+	public void update(final EquipmentVo vo) throws Exception {
+		sql = new StringBuffer();
+		sql.append("UPDATE equipment ");
+		sql.append("SET rfid=?, title=?, content=?, img=? ");
+		sql.append("WHERE `index`=?");
+		
+		new AbstractDao() {
+			@Override
+			public void query() throws Exception {
+				pstmt = con.prepareStatement(sql.toString());
+				pstmt.setInt(1, vo.getRfid());
+				pstmt.setString(2, vo.getTitle());
+				pstmt.setString(3, vo.getContent());
+				pstmt.setString(4, vo.getImg());
+				pstmt.setInt(5, vo.getIndex());
+				
+				pstmt.executeUpdate();
+			}
+		}.execute();
+	}
+	
 	public EquipmentVo selectByIndex(final int index) {
 		/*
 		 * 파라미터에 final이 붙는 이유 http://devbible.tistory.com/30

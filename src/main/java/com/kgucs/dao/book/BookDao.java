@@ -35,6 +35,29 @@ public class BookDao {
 		}.execute();
 	}
 	
+	public void update(final BookVo vo) {
+		sql = new StringBuffer();
+		sql.append("UPDATE book ");
+		sql.append("SET rfid=?, title=?, writer=?, publisher=?, content=?, img=? ");
+		sql.append("WHERE `index`=?");
+		
+		new AbstractDao() {
+			@Override
+			public void query() throws Exception {
+				pstmt = con.prepareStatement(sql.toString());
+				pstmt.setInt(1, vo.getRfid());
+				pstmt.setString(2, vo.getTitle());
+				pstmt.setString(3, vo.getWriter());
+				pstmt.setString(4, vo.getPublisher());
+				pstmt.setString(5, vo.getContent());
+				pstmt.setString(6, vo.getImg());
+				pstmt.setInt(7, vo.getIndex());
+				
+				pstmt.executeUpdate();
+			}
+		}.execute();
+	}
+	
 	public BookVo selectByIndex(final int index) {
 		/*
 		 * 파라미터에 final이 붙는 이유 http://devbible.tistory.com/30
