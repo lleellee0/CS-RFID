@@ -1230,7 +1230,7 @@ ul, ol, li {
   font-family: 'Montserrat', sans-serif;
   border-width: 0;
   border-radius: 0;
-  background: transparent;
+  background: linear-gradient(black, transparent);
 }
 
 .navbar-inverse {

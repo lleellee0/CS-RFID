@@ -4,8 +4,11 @@ public class ActionLogVo {
 	int index;
 	String type;
 	int type_index;
+	String title;
 	String action;
 	int member_index;
+	String std_number;
+	String name;
 	String action_date;
 	
 	public ActionLogVo() {}
@@ -74,6 +77,30 @@ public class ActionLogVo {
 
 	public void setAction_date(String action_date) {
 		this.action_date = action_date;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getStd_number() {
+		return std_number;
+	}
+
+	public void setStd_number(String std_number) {
+		this.std_number = std_number;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }

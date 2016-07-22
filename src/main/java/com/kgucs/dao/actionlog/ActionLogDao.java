@@ -88,33 +88,49 @@ public class ActionLogDao {
 		return mv;
 	}
 	
-	public List<ActionLogVo> selectByPage(final int page) {
+	public List<ActionLogVo> selectAllActions() {
+		/*
+		 * 사용된 쿼리
+		 * SELECT action_log.index, action_log.type, CASE WHEN action_log.type = 'book' THEN book.title
+	WHEN action_log.type = 'equipment' THEN equipment.title
+	END AS title, action_log.action, member.std_number, member.name, action_log.action_date
+	FROM action_log
+	LEFT JOIN book ON book.index = action_log.type_index
+	LEFT JOIN equipment ON equipment.index = action_log.type_index
+	LEFT JOIN member ON action_log.member_index = member.index
+	ORDER BY action_log.index DESC;
+		 */
+		
 		sql = new StringBuffer();
-		sql.append("SELECT * FROM ");
-		sql.append("action_log LIMIT ");
-		sql.append("?, ?");
+		sql.append(" SELECT action_log.index, action_log.type, CASE WHEN action_log.type = 'book' THEN book.title ");
+		sql.append(" WHEN action_log.type = 'equipment' THEN equipment.title ");
+		sql.append(" END AS title, action_log.action, member.std_number, member.name, action_log.action_date ");
+		sql.append(" FROM action_log ");
+		sql.append(" LEFT JOIN book ON book.index = action_log.type_index ");
+		sql.append(" LEFT JOIN equipment ON equipment.index = action_log.type_index ");
+		sql.append(" LEFT JOIN member ON action_log.member_index = member.index ");
+		sql.append(" ORDER BY action_log.index DESC ");
 		
 		new AbstractDao() {
 			@Override
 			public void query() throws Exception {
 				pstmt = con.prepareStatement(sql.toString());
 				
-				SingletonSetting ssi = SingletonSetting.getInstance();
-				int pageSize = ssi.getPageSize();
-				
-				
-				pstmt.setInt(1, (page-1) * pageSize);
-				pstmt.setInt(2, pageSize);
 				rs = pstmt.executeQuery();
 				
 				while(rs.next()) {
 					ActionLogVo vo = new ActionLogVo(); 
 					vo.setIndex(rs.getInt(1));
 					vo.setType(rs.getString(2));
-					vo.setType_index(rs.getInt(3));
+					vo.setTitle(rs.getString(3));
 					vo.setAction(rs.getString(4));
-					vo.setMember_index(rs.getInt(5));
-					vo.setAction_date(rs.getString(6));
+					vo.setStd_number(rs.getString(5));
+					vo.setName(rs.getString(6));
+					
+					// datetime 뒤에 .0이 붙는 것 제거
+					String actionDate = rs.getString(7);
+					vo.setAction_date(actionDate.substring(0, actionDate.indexOf('.')));
+					
 					list.add(vo);
 				}
 			}
@@ -166,25 +182,39 @@ public class ActionLogDao {
 		return bookList;
 	}
 	
-	public int getLastPageNumber() {
+	/*
+	public List<ActionLogVo> selectByPage(final int page) {
 		sql = new StringBuffer();
-		sql.append("SELECT count(*) FROM ");
-		sql.append("action_log");
+		sql.append("SELECT * FROM ");
+		sql.append("action_log LIMIT ");
+		sql.append("?, ?");
 		
 		new AbstractDao() {
 			@Override
 			public void query() throws Exception {
 				pstmt = con.prepareStatement(sql.toString());
+				
+				SingletonSetting ssi = SingletonSetting.getInstance();
+				int pageSize = ssi.getPageSize();
+				
+				
+				pstmt.setInt(1, (page-1) * pageSize);
+				pstmt.setInt(2, pageSize);
 				rs = pstmt.executeQuery();
 				
 				while(rs.next()) {
-					count = rs.getInt(1);
+					ActionLogVo vo = new ActionLogVo(); 
+					vo.setIndex(rs.getInt(1));
+					vo.setType(rs.getString(2));
+					vo.setType_index(rs.getInt(3));
+					vo.setAction(rs.getString(4));
+					vo.setMember_index(rs.getInt(5));
+					vo.setAction_date(rs.getString(6));
+					list.add(vo);
 				}
 			}
 		}.execute();
-		SingletonSetting ssi = SingletonSetting.getInstance();
-		int pageSize = ssi.getPageSize();
-
-		return (count/pageSize) + 1;
+		return list;
 	}
+	*/
 }

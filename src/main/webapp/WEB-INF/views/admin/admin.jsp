@@ -21,7 +21,7 @@
             <div class="row center-content">
                 <div class="col-md-10 col-md-offset-1 text-center">
                     <h3>Admin Page</h3>
-                    <p></p>
+                    <p><a href="${path}/admin/action-list" class="btn btn-lg btn-danger">Go To Action List<i class="icon-location2"></i></a></p>
                     <div class="space40"></div>
                 </div>
             </div>
@@ -107,8 +107,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-    
+        </div>    
 </section>
 
 <%@include file="../include/footer.jsp" %>

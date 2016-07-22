@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kgucs.dao.actionlog.ActionLogDao;
 import com.kgucs.dao.book.BookDao;
 import com.kgucs.dao.book.BookVo;
 import com.kgucs.dao.equipment.EquipmentDao;
@@ -33,6 +34,20 @@ public class AdminController {
 		ssi.setAllParameter(model);
 		
 		return "admin/admin";
+	}
+	
+	@RequestMapping(value = "/admin/action-list", method = RequestMethod.GET)
+	public String actionList(Locale locale, Model model) {
+		logger.info("admin Page!! The client locale is {}.", locale);
+		
+		SingletonSetting ssi = SingletonSetting.getInstance();
+		ssi.setAllParameter(model);
+		
+		ActionLogDao dao = new ActionLogDao();
+		
+		model.addAttribute("actionList", dao.selectAllActions());
+		
+		return "admin/action_list";
 	}
 	
 	@RequestMapping(value = "/admin/book/regist", method = RequestMethod.POST)
