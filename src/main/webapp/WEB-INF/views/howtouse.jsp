@@ -85,7 +85,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h4 class="text-uppercase space20">12 Column Width</h4>
+                            <h2 class="text-uppercase space20">반납</h2>
                             <p>Cras consequat porttitor tincidunt. Aliquam erat volutpat. Sed dignissim hendrerit nibh, quis faucibus erat cursus eget. Integer porta nisl vitae felis rutrum ut mollis felis congue. Vestibulum augue nisl, egestas eu rhoncus eu, fermentum in leo. Pellentesque ultricies pharetra nulla sit amet sagittis. Curabitur at feugiat nibh. Duis sit amet odio eros. Donec non purus non augue cursus convallis sed id purus. In fringilla luctus scelerisque. Donec mauris magna, iaculis non suscipit eu, pellentesque nec urna.</p>
                         </div>
                     </div>
@@ -103,8 +103,11 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h4 class="text-uppercase space20">12 Column Width</h4>
-                            <p>Cras consequat porttitor tincidunt. Aliquam erat volutpat. Sed dignissim hendrerit nibh, quis faucibus erat cursus eget. Integer porta nisl vitae felis rutrum ut mollis felis congue. Vestibulum augue nisl, egestas eu rhoncus eu, fermentum in leo. Pellentesque ultricies pharetra nulla sit amet sagittis. Curabitur at feugiat nibh. Duis sit amet odio eros. Donec non purus non augue cursus convallis sed id purus. In fringilla luctus scelerisque. Donec mauris magna, iaculis non suscipit eu, pellentesque nec urna.</p>
+                            <h2 class="text-uppercase space20">사이트 이용에 관해</h2>
+                            <p>기존에 투표를 진행했던 것처럼 대출중인 도서 및 기자재는 누가 대출중인지 나옵니다. 
+							하지만 누가 대출중인지 로그인하지 않은 사람도 볼 수 있게 하는 것은 조금 꺼림칙할 것 같다고 생각했습니다. 
+							그래서 대출 중인 사람이 누구인지 확인하는 것은 도서 및 기자재의 링크(상세정보라고 하겠습니다.)를 클릭하여 들어가고 나서 확인할 수 있도록 하였습니다.
+							 그리고 상세정보를 보기 위해선 반드시 로그인이 필요하도록 구현했습니다.</p>
                         </div>
                     </div>
                 </div>

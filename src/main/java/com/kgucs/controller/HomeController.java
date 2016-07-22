@@ -95,7 +95,10 @@ public class HomeController {
 
 		if (vo.getId() != null) { // 로그인 성공!
 			request.getSession().setAttribute("memberVo", vo);
-			response.sendRedirect((String) request.getSession().getAttribute("whereToGo"));
+			if((String) request.getSession().getAttribute("whereToGo") == null)		// 로그인 페이지로 직접 들어온 경우
+				response.sendRedirect(ssi.getPath());
+			else
+				response.sendRedirect((String) request.getSession().getAttribute("whereToGo"));
 		} else { // 로그인 실패!
 			response.sendRedirect(ssi.getPath() + "/login");
 		}

@@ -14,6 +14,7 @@ import com.kgucs.setting.SingletonSetting;
 public class LoginInterCeptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
 		HttpSession session = request.getSession();
+		System.out.println(request.getRequestURI());
 		session.setAttribute("whereToGo", request.getRequestURI());
 		// 로그인에 성공하면 이동해야할 곳(사용자가 가려고 했던 곳)의 URL 저장.
 		
