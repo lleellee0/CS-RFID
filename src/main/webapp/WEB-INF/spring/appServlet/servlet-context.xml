@@ -28,6 +28,7 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/borrow/**"/>
+			<mapping path="/profile"/>
 			<mapping path="/list/**/details/**"/>
 			<beans:bean class="com.kgucs.interceptor.LoginInterCeptor"/>
 		</interceptor>

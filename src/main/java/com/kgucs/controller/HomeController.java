@@ -1,6 +1,7 @@
 package com.kgucs.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kgucs.dao.book.BookDao;
+import com.kgucs.dao.book.BookVo;
 import com.kgucs.dao.equipment.EquipmentDao;
+import com.kgucs.dao.equipment.EquipmentVo;
 import com.kgucs.dao.member.MemberDao;
 import com.kgucs.dao.member.MemberVo;
 import com.kgucs.setting.SingletonSetting;
@@ -117,5 +120,64 @@ public class HomeController {
 		// 이전에 있던 페이지로 돌려보낸다.
 		// 만약 로그인이 필요한 페이지였다면 인터셉터에서 알아서 처리할 것이다.
 		response.sendRedirect(request.getHeader("referer"));	
+	}
+	
+	@RequestMapping(value = "/profile", method = RequestMethod.GET)
+	public String profile(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		logger.info("Welcome home! The client locale is {}.", locale);
+
+		SingletonSetting ssi = SingletonSetting.getInstance();
+		ssi.setAllParameter(model);
+		
+		HttpSession session = request.getSession();
+		MemberVo memberVo = (MemberVo) session.getAttribute("memberVo");
+		
+		BookDao bookDao = new BookDao();
+		List<BookVo> bookList = bookDao.selectByBorrowedMemberIndex(memberVo.getIndex());
+		
+		EquipmentDao equipmentDao = new EquipmentDao();
+		List<EquipmentVo> equipmentList = equipmentDao.selectByBorrowedMemberIndex(memberVo.getIndex());
+		
+		model.addAttribute("bookList", bookList);
+		model.addAttribute("equipmentList", equipmentList);
+		
+		return "profile";
+	}
+	
+	@RequestMapping(value = "/change-password", method = RequestMethod.POST)
+	public String changePassword(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+		logger.info("Welcome home! The client locale is {}.", locale);
+
+		SingletonSetting ssi = SingletonSetting.getInstance();
+		ssi.setAllParameter(model);
+
+		HttpSession session = request.getSession();
+		MemberVo currentMemberVo = (MemberVo) session.getAttribute("memberVo");
+		
+		MemberDao dao = new MemberDao();
+		
+		if(dao.selectByIdAndPassword(currentMemberVo.getId(), (String)request.getParameter("current")).getIndex() != 0) {
+			// 입력한 비밀번호가 맞음.
+			// 비밀번호 변경 하기
+			
+			// 필드 중복 사용 문제로 다시 생성해야함.
+			dao = new MemberDao();
+			if(dao.updatePasswordByIndex((String) request.getParameter("new"), currentMemberVo.getIndex()) == 1) {
+				session.removeAttribute("memberVo");
+				model.addAttribute("script", "alert('비밀번호가 성공적으로 변경되었습니다. 바뀐 비밀번호로 로그인해주세요.');"
+						+ "location.href='" + ssi.getPath() + "/'");
+				return "script";
+			} else {
+				model.addAttribute("script", "alert('1비밀번호 변경 중 문제가 발생했습니다. 다시 시도해주세요.');"
+						+ "history.go(-1);");
+				return "script";
+			}
+				
+		}
+		
+		// 이전에 있던 페이지로 돌려보낸다.
+		model.addAttribute("script", "alert('2비밀번호 변경 중 문제가 발생했습니다. 다시 시도해주세요.');"
+				+ "history.go(-1);");
+		return "script";	
 	}
 }

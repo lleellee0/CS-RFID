@@ -22,7 +22,7 @@
                 <li data-app-prevent-settings="" data-target="#slider2-41" data-slide-to="0" class="active"></li><li data-app-prevent-settings="" data-target="#slider2-41" data-slide-to="1"></li><li data-app-prevent-settings="" data-target="#slider2-41" class="" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner" role="listbox">
-                <div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height active" style="background-image: url(${path}/assets/images/13-fhd.jpg);">
+                <div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height active" style="background-image: url(${path}/assets/images/about_1.jpg);">
                     <div class="mbr-box__magnet mbr-box__magnet--center-left mbr-box__magnet--sm-padding">
                     <div class="mbr-overlay"></div>                        
                         <div class=" container">
@@ -31,16 +31,16 @@
                                 <div class=" col-md-6 col-md-offset-1">  
 
                                 <div class="mbr-hero">
-                                    <h1 class="mbr-hero__text">Slide 1</h1>
+                                    <h1 class="mbr-hero__text">책이요..</h1>
 
-                                    <p class="mbr-hero__subtext">Develop fully responsive, mobile-optimized websites that look amazing on any devices and browsers. Preview how your website will appear on phones, tablets and desktops directly in the visual editor.</p>
+                                    <p class="mbr-hero__subtext">보세요 ^^</p>
                                 </div>
                                 
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div><div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height" style="background-image: url(${path}/assets/images/4.jpg);">
+                </div><div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height" style="background-image: url(${path}/assets/images/about_2.jpg);">
                     <div class="mbr-box__magnet mbr-box__magnet--center-center mbr-box__magnet--sm-padding">
                     <div class="mbr-overlay"></div>                        
                         <div class=" container">
@@ -49,16 +49,16 @@
                                 <div class=" col-md-8 col-md-offset-2">  
 
                                 <div class="mbr-hero">
-                                    <h1 class="mbr-hero__text">Slide 2</h1>
+                                    <h1 class="mbr-hero__text">라즈베리파이2와 RFID 리더</h1>
 
-                                    <p class="mbr-hero__subtext">Mobirise is based on Bootstrap 3 - most powerful mobile first framework. Use any bootstrap themes with no extra work.</p>
+                                    <p class="mbr-hero__subtext">반납처리를 하려면 RFID 리더에 책의 NFC를 태그하세요.</p>
                                 </div>
                                 
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div><div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height" style="background-image: url(${path}/assets/images/kakaotalk-20160704-005000211-1440x810-32.jpg);">
+                </div><div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height" style="background-image: url(${path}/assets/images/about_3.jpg);">
                     <div class="mbr-box__magnet mbr-box__magnet--center-right mbr-box__magnet--sm-padding">
                     <div class="mbr-overlay"></div>                        
                         <div class=" container">
@@ -69,7 +69,8 @@
                                 <div class="mbr-hero">
                                     <h1 class="mbr-hero__text">개발했던 환경입니다.</h1>
 
-                                    <p class="mbr-hero__subtext">Choose from the large selection of latest pre-made blocks - hero images, parallax scrolling, video backgrounds, hamburger menu, sticky header and more.</p>
+                                    <p class="mbr-hero__subtext">대출 시스템 구현 및 이용방법에대해 궁금하신 점이</p>
+                                    <p class="mbr-hero__subtext"> 있다면 연락주세요.</p>
                                 </div>
                                 
                                 </div>

@@ -5,6 +5,7 @@ import com.kgucs.dao.AbstractDao;
 public class MemberDao {
 	StringBuffer sql = new StringBuffer();
 	final MemberVo mv = new MemberVo();
+	int result = 0;
 	int count = 0;
 	
 	public void insert(final MemberVo vo) throws Exception {
@@ -79,6 +80,24 @@ public class MemberDao {
 			}
 		}.execute();
 		return mv;
+	}
+	
+	public int updatePasswordByIndex(final String password, final int index) {
+		sql.append("UPDATE member ");
+		sql.append("SET password=password(?) ");
+		sql.append("WHERE `index`=?");
+		
+		new AbstractDao() {
+			@Override
+			public void query() throws Exception {
+				pstmt = con.prepareStatement(sql.toString());
+				pstmt.setString(1, password);
+				pstmt.setInt(2, index);
+				result = pstmt.executeUpdate();
+				
+			}
+		}.execute();
+		return result;
 	}
 	
 	public int getCount() {

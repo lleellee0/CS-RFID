@@ -146,6 +146,36 @@ public class EquipmentDao {
 		return list;
 	}
 	
+	public List<EquipmentVo> selectByBorrowedMemberIndex(final int memberIndex) {
+		sql = new StringBuffer();
+		sql.append("SELECT * FROM ");
+		sql.append("equipment WHERE borrowed_member_index=?");
+		
+		new AbstractDao() {
+			@Override
+			public void query() throws Exception {
+				pstmt = con.prepareStatement(sql.toString());
+				
+
+				pstmt.setInt(1, memberIndex);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					EquipmentVo vo = new EquipmentVo(); 
+					vo.setIndex(rs.getInt(1));
+					vo.setRfid(rs.getInt(2));
+					vo.setTitle(rs.getString(3));
+					vo.setContent(rs.getString(4));
+					vo.setImg(rs.getString(5));
+					vo.setBorrowed_member_index(rs.getInt(6));
+					vo.setDue_date(rs.getString(7));
+					list.add(vo);
+				}
+			}
+		}.execute();
+		return list;
+	}
+	
 	public int getLastPageNumber() {
 		sql = new StringBuffer();
 		sql.append("SELECT count(*) FROM ");
