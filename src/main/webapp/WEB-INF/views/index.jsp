@@ -150,6 +150,6 @@
 <%@include file="include/footer.jsp" %>
 <%@include file="include/script.jsp" %>
 
-<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBw1otMfnbpjhNgKLz3fCuu2Up6ObF_p6U"></script>
 </body>
 </html>
