@@ -69,9 +69,9 @@ public class AdminController {
 					"");
 			
 			dao.insert(vo);
-			response.sendRedirect(ssi.getPath() + "/admin/admin#counters2-8");
+			response.sendRedirect(ssi.getPath() + "admin/admin#counters2-8");
 		} else {	// 있으면
-			response.sendRedirect(ssi.getPath() + "/admin/book/regist/fail/" + request.getParameter("rfid"));
+			response.sendRedirect(ssi.getPath() + "admin/book/regist/fail/" + request.getParameter("rfid"));
 		}
 		
 	}
@@ -112,9 +112,9 @@ public class AdminController {
 				"");
 		
 			dao.insert(vo);
-			response.sendRedirect(ssi.getPath() + "/admin/admin#counters2-9");
+			response.sendRedirect(ssi.getPath() + "admin/admin#counters2-9");
 		} else {
-			response.sendRedirect(ssi.getPath() + "/admin/equipment/regist/fail/" + request.getParameter("rfid"));
+			response.sendRedirect(ssi.getPath() + "admin/equipment/regist/fail/" + request.getParameter("rfid"));
 		}
 	}
 	
@@ -173,7 +173,7 @@ public class AdminController {
 		
 		dao.update(vo);
 
-		model.addAttribute("script", "location.replace('" + ssi.getPath() + "/list/book/details/" + index +"');");		// 뒤로가기하면 Edit 창이 뜬당..
+		model.addAttribute("script", "location.replace('" + ssi.getPath() + "list/book/details/" + index +"');");		// 뒤로가기하면 Edit 창이 뜬당..
 		return "script";
 	}
 	
@@ -209,7 +209,7 @@ public class AdminController {
 		
 		dao.update(vo);
 
-		model.addAttribute("script", "location.replace('" + ssi.getPath() + "/list/equipment/details/" + index +"');");		// 뒤로가기하면 Edit 창이 뜬당..
+		model.addAttribute("script", "location.replace('" + ssi.getPath() + "list/equipment/details/" + index +"');");		// 뒤로가기하면 Edit 창이 뜬당..
 		return "script";
 	}
 }

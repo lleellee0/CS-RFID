@@ -103,7 +103,7 @@ public class HomeController {
 			else
 				response.sendRedirect((String) request.getSession().getAttribute("whereToGo"));
 		} else { // 로그인 실패!
-			response.sendRedirect(ssi.getPath() + "/login");
+			response.sendRedirect(ssi.getPath() + "login");
 		}
 	}
 	
@@ -165,7 +165,7 @@ public class HomeController {
 			if(dao.updatePasswordByIndex((String) request.getParameter("new"), currentMemberVo.getIndex()) == 1) {
 				session.removeAttribute("memberVo");
 				model.addAttribute("script", "alert('비밀번호가 성공적으로 변경되었습니다. 바뀐 비밀번호로 로그인해주세요.');"
-						+ "location.href='" + ssi.getPath() + "/'");
+						+ "location.href='" + ssi.getPath());
 				return "script";
 			} else {
 				model.addAttribute("script", "alert('1비밀번호 변경 중 문제가 발생했습니다. 다시 시도해주세요.');"

@@ -8,7 +8,7 @@
 
                 <div class="navbar-header mbr-brand mbr-brand--inline">
                     
-                    <div class="brandName"><a href="${path}/" class="navbar-brand brand">csems</a></div>
+                    <div class="brandName"><a href="${path}" class="navbar-brand brand">csems</a></div>
                 </div>
 
 
@@ -25,21 +25,21 @@
                     <li class="dropdown1">
                     <c:choose>
                     	<c:when test="${sessionScope.memberVo eq null}">
-                    		<a href="${path}/login" style="color:#ffcc00">Login</a>
+                    		<a href="${path}login" style="color:#ffcc00">Login</a>
                     	</c:when>
                     	<c:otherwise>
                     		<c:if test="${sessionScope.memberVo.member_level eq 10}">
-                    			<a href="${path}/admin/admin" style="color:#ff0000">admin</a>
+                    			<a href="${path}admin/admin" style="color:#ff0000">admin</a>
                     		</c:if>
-                    		<a class="text-white" href="${path}/profile">Profile</a>
-                    		<a class="text-white" href="${path}/logout">Logout</a>
+                    		<a class="text-white" href="${path}profile">Profile</a>
+                    		<a class="text-white" href="${path}logout">Logout</a>
                     	</c:otherwise>
                     </c:choose>
                     <a></a><!-- 네비게이션 바 간격주기 -->
-                    <a class="text-white" href="${path}/">Home</a>
-                    <a class="text-white" href="${path}/list/book/1">list</a>
-                    <a class="text-white" href="${path}/howtouse/">how to use</a>
-                    <a class="text-white" href="${path}/about/">about</a></li></ul>
+                    <a class="text-white" href="${path}">Home</a>
+                    <a class="text-white" href="${path}list/book/1">list</a>
+                    <a class="text-white" href="${path}howtouse/">how to use</a>
+                    <a class="text-white" href="${path}about/">about</a></li></ul>
                 </div>
             </div>
         </nav>

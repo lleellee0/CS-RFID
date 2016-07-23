@@ -22,7 +22,7 @@
                 <li data-app-prevent-settings="" data-target="#slider2-41" data-slide-to="0" class="active"></li><li data-app-prevent-settings="" data-target="#slider2-41" data-slide-to="1"></li><li data-app-prevent-settings="" data-target="#slider2-41" class="" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner" role="listbox">
-                <div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height active" style="background-image: url(${path}/assets/images/about_1.jpg);">
+                <div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height active" style="background-image: url(${path}assets/images/about_1.jpg);">
                     <div class="mbr-box__magnet mbr-box__magnet--center-left mbr-box__magnet--sm-padding">
                     <div class="mbr-overlay"></div>                        
                         <div class=" container">
@@ -40,7 +40,7 @@
                             </div>
                         </div>
                     </div>
-                </div><div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height" style="background-image: url(${path}/assets/images/about_2.jpg);">
+                </div><div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height" style="background-image: url(${path}assets/images/about_2.jpg);">
                     <div class="mbr-box__magnet mbr-box__magnet--center-center mbr-box__magnet--sm-padding">
                     <div class="mbr-overlay"></div>                        
                         <div class=" container">
@@ -58,7 +58,7 @@
                             </div>
                         </div>
                     </div>
-                </div><div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height" style="background-image: url(${path}/assets/images/about_3.jpg);">
+                </div><div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height" style="background-image: url(${path}assets/images/about_3.jpg);">
                     <div class="mbr-box__magnet mbr-box__magnet--center-right mbr-box__magnet--sm-padding">
                     <div class="mbr-overlay"></div>                        
                         <div class=" container">
@@ -100,7 +100,7 @@
                 <div class="col-md-12">
                     <div class="row center-content">
                         <div class="col-md-7">
-                            <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom mbr-figure--full-width"><img src="${path}/assets/images/20160704-005714-1192x679-83.png" class="mbr-figure__img"></figure>
+                            <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom mbr-figure--full-width"><img src="${path}assets/images/20160704-005714-1192x679-83.png" class="mbr-figure__img"></figure>
                         </div>
                         <div class="col-md-5">
                             <h3 class="text-uppercase space20"><font color="#000000">DESIGN</font></h3>
@@ -129,7 +129,7 @@
                         
                     </div>
                     <div class="col-md-7">
-                        <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom mbr-figure--full-width"><img src="${path}/assets/images/version-manage-377x185-13.png" class="mbr-figure__img"></figure>
+                        <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom mbr-figure--full-width"><img src="${path}assets/images/version-manage-377x185-13.png" class="mbr-figure__img"></figure>
                     </div>
                 </div>
             </div>
@@ -147,7 +147,7 @@
                 <div class="col-md-12">
                     <div class="row center-content">
                         <div class="col-md-7">
-                            <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom mbr-figure--full-width"><img src="${path}/assets/images/spring-by-pivotal-9066b55828deb3c10e27e609af322c40-800x260-48.png" class="mbr-figure__img"></figure>
+                            <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom mbr-figure--full-width"><img src="${path}assets/images/spring-by-pivotal-9066b55828deb3c10e27e609af322c40-800x260-48.png" class="mbr-figure__img"></figure>
                         </div>
                         <div class="col-md-5">
                             <h3 class="text-uppercase space20">sERVER-SIDE</h3>
@@ -176,7 +176,7 @@
                         
                     </div>
                     <div class="col-md-7">
-                        <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom mbr-figure--full-width"><img src="${path}/assets/images/unnamed-300x300-66.png" class="mbr-figure__img"></figure>
+                        <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom mbr-figure--full-width"><img src="${path}assets/images/unnamed-300x300-66.png" class="mbr-figure__img"></figure>
                     </div>
                 </div>
             </div>
@@ -194,7 +194,7 @@
                 <div class="col-md-12">
                     <div class="row center-content">
                         <div class="col-md-7">
-                            <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom mbr-figure--full-width"><img src="${path}/assets/images/qrcode-400x400-68.png" class="mbr-figure__img"></figure>
+                            <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom mbr-figure--full-width"><img src="${path}assets/images/qrcode-400x400-68.png" class="mbr-figure__img"></figure>
                         </div>
                         <div class="col-md-5">
                             <h3 class="text-uppercase space20"><font color="#000000">QR CODE</font></h3>

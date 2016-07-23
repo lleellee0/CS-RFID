@@ -14,7 +14,7 @@
 <body>
 <%@include file="include/nav.jsp" %>
 
-<section class="mbr-section--bg-adapted mbr-after-navbar" id="header15-4" style="background-image: url(${path}/assets/images/4.jpg);">
+<section class="mbr-section--bg-adapted mbr-after-navbar" id="header15-4" style="background-image: url(${path}assets/images/4.jpg);">
     <div class="intro intro4" style="padding-top: 220px; padding-bottom: 0px;">
         <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(0, 0, 0);"></div>
         <div class="container">
@@ -24,12 +24,12 @@
                     <p>융합보안학과 도서 및 기자재 관리 시스템입니다.<br>가칭 CSEMS(Conversion Security Equipment Management System)</p>
                     <div class="space30"></div>
 
-                    <div><a href="${path}/howtouse" class="btn btn-lg btn-primary">Know more csems<i class="icon-location2"></i></a></div>
+                    <div><a href="${path}howtouse" class="btn btn-lg btn-primary">Know more csems<i class="icon-location2"></i></a></div>
                 </div>
             </div>
 
             <div class="intro4-image container">
-                <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom"><img src="${path}/assets/images/9.png" class="mbr-figure__img img-responsive center-block"></figure>
+                <figure class="mbr-figure mbr-figure--adapted mbr-figure--caption-inside-bottom"><img src="${path}assets/images/9.png" class="mbr-figure__img img-responsive center-block"></figure>
             </div>
         </div>
     </div>

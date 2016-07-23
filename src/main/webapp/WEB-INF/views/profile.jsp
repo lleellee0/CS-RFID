@@ -7,7 +7,7 @@
 <!-- Site made with Mobirise Website Builder v2.11.1, https://mobirise.com -->
 <%@include file="include/meta.jsp"%>
 <%@include file="include/css.jsp"%>
-<link rel="stylesheet" href="${path}/assets/form/form.css"
+<link rel="stylesheet" href="${path}assets/form/form.css"
 	type="text/css">
 
 
@@ -17,7 +17,7 @@
 
 	<section id="header6-0">
 		<div class="intro intro12"
-			style="background-image: url(${path}/assets/images/3.jpg);">
+			style="background-image: url(${path}assets/images/3.jpg);">
 			<div class="overlay"></div>
 			<div class="container">
 				<div class="row center-content">
@@ -51,7 +51,7 @@
 						<p>대출중인 도서</p>
 						<c:forEach items="${bookList}" var="list" varStatus="status">
 							<p>
-								<a href="${path}/list/book/details/${list.index}">${list.title}</a>
+								<a href="${path}list/book/details/${list.index}">${list.title}</a>
 							</p>
 						</c:forEach>
 					</div>
@@ -61,7 +61,7 @@
 						<p>대여중인 기자재</p>
 						<c:forEach items="${equipmentList}" var="list" varStatus="status">
 							<p>
-								<a href="${path}/list/equipment/details/${list.index}">${list.title}</a>
+								<a href="${path}list/equipment/details/${list.index}">${list.title}</a>
 							</p>
 						</c:forEach>
 					</div>
@@ -79,7 +79,7 @@
                         <p>
                         	Change Password
                         	<div id="wrapper">
-						        <form action="${path}/change-password" method="post">
+						        <form action="${path}change-password" method="post">
 						            <fieldset>
 						                <legend>Input Form</legend>
 						                <div>

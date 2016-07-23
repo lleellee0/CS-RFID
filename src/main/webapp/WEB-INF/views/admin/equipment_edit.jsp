@@ -7,7 +7,7 @@
   <!-- Site made with Mobirise Website Builder v2.11.1, https://mobirise.com -->
   <%@include file="../include/meta.jsp" %>
   <%@include file="../include/css.jsp" %>
-  <link rel= "stylesheet" href="${path}/assets/form/form.css" type="text/css">
+  <link rel= "stylesheet" href="${path}assets/form/form.css" type="text/css">
   
   
 </head>
@@ -15,13 +15,13 @@
 <%@include file="../include/nav.jsp" %>
 
 <section id="header6-0">
-    <div class="intro intro12" style="background-image: url(${path}/assets/images/3.jpg);">
+    <div class="intro intro12" style="background-image: url(${path}assets/images/3.jpg);">
         <div class="overlay"></div>
         <div class="container">
             <div class="row center-content">
                 <div class="col-md-10 col-md-offset-1 text-center">
                     <h3>Admin Page</h3>
-                    <p><a href="${path}/admin/action-list" class="btn btn-lg btn-danger">Go To Action List<i class="icon-location2"></i></a></p>
+                    <p><a href="${path}admin/action-list" class="btn btn-lg btn-danger">Go To Action List<i class="icon-location2"></i></a></p>
                     <div class="space40"></div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                         <p>
                         	Equipment Edit
                         	<div id="wrapper">
-						        <form action="${path}/admin/equipment/edit/${details.index}" method="post">
+						        <form action="${path}admin/equipment/edit/${details.index}" method="post">
 						            <fieldset>
 						                <legend>Edit Form</legend>
 						                <div>
