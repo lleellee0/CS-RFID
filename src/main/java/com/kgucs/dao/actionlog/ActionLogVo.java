@@ -13,6 +13,13 @@ public class ActionLogVo {
 	
 	public ActionLogVo() {}
 	
+	public ActionLogVo(String type, int type_index, String action, int member_index) {
+		this.type = type;
+		this.type_index = type_index;
+		this.action = action;
+		this.member_index = member_index;
+	}
+	
 	public ActionLogVo(String type, int type_index, String action, int member_index, String action_date) {
 		this.type = type;
 		this.type_index = type_index;

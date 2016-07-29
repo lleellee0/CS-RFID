@@ -26,7 +26,7 @@ public class ActionLogDao {
 				pstmt.setString(1, vo.getType());
 				pstmt.setInt(2, vo.getType_index());
 				pstmt.setString(3, vo.getAction());
-				pstmt.setInt(4, vo.getMember_index());	
+				pstmt.setInt(4, vo.getMember_index());
 				pstmt.executeUpdate();
 			}
 		}.execute();

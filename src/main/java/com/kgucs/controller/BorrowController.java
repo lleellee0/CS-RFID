@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.kgucs.dao.actionlog.ActionLogDao;
+import com.kgucs.dao.actionlog.ActionLogVo;
 import com.kgucs.dao.book.BookDao;
 import com.kgucs.dao.book.BookVo;
 import com.kgucs.dao.equipment.EquipmentDao;
@@ -72,8 +74,11 @@ public class BorrowController {
 			vo.setBorrowed_member_index(memVo.getIndex());
 			dao.update(vo);
 			
-			System.out.println(2);
 			// action_log에 로그남기기
+			ActionLogDao logDao = new ActionLogDao();
+			ActionLogVo logVo = new ActionLogVo("book", vo.getIndex(), "borrow", memVo.getIndex());
+			
+			logDao.insert(logVo);
 		}
 		model.addAttribute("type", "book");	// writer와 publisher를 추가해주기 위해.
 		
@@ -126,6 +131,10 @@ public class BorrowController {
 			dao.update(vo);
 			
 			// action_log에 로그남기기
+			ActionLogDao logDao = new ActionLogDao();
+			ActionLogVo logVo = new ActionLogVo("equipment", vo.getIndex(), "borrow", memVo.getIndex());
+			
+			logDao.insert(logVo);
 		}
 		
 		return "borrow";
