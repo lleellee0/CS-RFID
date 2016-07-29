@@ -32,8 +32,8 @@ public class SingletonSetting {
 	
 	/*
 	 * setAllParameter은 URL의 경로를 설정해준다.
-	 * ex) <a class="text-white" href="${path}/">Home</a>
-     *     <a class="text-white" href="${path}/list">list</a>
+	 * ex) <a class="text-white" href="${path}">Home</a>
+     *     <a class="text-white" href="${path}list">list</a>
 	 */
 	public void setAllParameter(Model model) {
 		model.addAttribute("path", path);
