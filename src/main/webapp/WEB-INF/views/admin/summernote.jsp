@@ -9,9 +9,9 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet"> 
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script> 
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-<link href="${path}/assets/summernote/summernote.css" rel="stylesheet">
-<script src="${path}/assets/summernote/summernote.min.js"></script>
-<script src="${path}/assets/summernote/lang/summernote-ko-KR.js"></script>
+<link href="${path}assets/summernote/summernote.css" rel="stylesheet">
+<script src="${path}assets/summernote/summernote.min.js"></script>
+<script src="${path}assets/summernote/lang/summernote-ko-KR.js"></script>
 <script>
 	$(document).ready(function() {
 	  $('#summernote').summernote({

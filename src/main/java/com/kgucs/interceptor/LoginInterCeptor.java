@@ -25,7 +25,7 @@ public class LoginInterCeptor extends HandlerInterceptorAdapter {
 			if (memberVo == null) {
 				// 로그인페이지로 redirect
 				SingletonSetting ssi = SingletonSetting.getInstance();
-				response.sendRedirect(ssi.getPath() + "/login");
+				response.sendRedirect(ssi.getPath() + "login");
 
 				return false;
 			}

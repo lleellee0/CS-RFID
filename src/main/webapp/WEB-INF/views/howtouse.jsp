@@ -33,22 +33,22 @@
                     </div>
                     <div class="row space20">
                     	<div class="col-md-4 col-md-offset-1">
-                        	<img class="space20" src="${path}/assets/images/howtouse_qr_1.png" style="width:100%;">
+                        	<img class="space20" src="${path}assets/images/howtouse_qr_1.png" style="width:100%;">
                         	<p><span style="color:#ff5555">[1-(QR CODE)]</span> 먼저 QR CODE를 스캔할 수 있는 앱을 실행시킵니다. 예시로 저는 네이버앱을 켰지만 QR CODE를 스캔할 수 있는 앱이라면 아무거나 좋습니다.</p>
                         </div>
                         <div class="col-md-4 col-md-offset-2">
-                        	<img class="space20" src="${path}/assets/images/howtouse_qr_2.png" style="width:100%;">
+                        	<img class="space20" src="${path}assets/images/howtouse_qr_2.png" style="width:100%;">
                         	<p><span style="color:#ff5555">[2-(QR CODE)]</span> QR CODE 스캔할 수 있는 앱을 실행시킨 후 책 뒷면 왼쪽 아래에 있는 QR코드를 스캔시켜줍니다.</p>
                         </div>
                     </div>
                     <div class="row">
                     	<div class="col-md-4 col-md-offset-1">
-                        	<img class="space20" src="${path}/assets/images/howtouse_nfc_1.png" style="width:100%;">
+                        	<img class="space20" src="${path}assets/images/howtouse_nfc_1.png" style="width:100%;">
                         	<p><span style="color:#ff5555">[1-(NFC TAG)]</span> 먼저 NFC 기능을 켜야합니다. NFC 기능에는 [카드 모드]와 [읽기/쓰기 P2P 모드]가 존재하며 대출을 이용하기 위해서는 
                         	[읽기/쓰기 P2P 모드]를 선택해주시면 됩니다.</p>
                         </div>
                         <div class="col-md-4 col-md-offset-2">
-                        	<img class="space20" src="${path}/assets/images/howtouse_nfc_2.png" style="width:100%;">
+                        	<img class="space20" src="${path}assets/images/howtouse_nfc_2.png" style="width:100%;">
                         	<p><span style="color:#ff5555">[2-(NFC TAG)]</span> NFC 기능이 켜진 상태에서 스마트폰을 NFC 태그 있는 위치에 댑니다. 사진은 NFC 태그의 위치를 보여주기 위해
                         	뒷면을 보여주고 있으나 구지 뒷면을 대고 인식시킬 필요는 없고 QR CODE가 있는 위치 바로 뒤에 있으니 QR CODE에 스마트폰을 대시면 됩니다.</p>
                         </div>

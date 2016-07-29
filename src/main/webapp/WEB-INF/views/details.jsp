@@ -65,12 +65,12 @@
                             	<c:choose>
 									<c:when test="${type eq 'book'}">
 										<c:if test="${sessionScope.memberVo.member_level eq 10}">
-				                   			<div><a href="${path}/admin/book/edit/${details.index}" class="btn btn-primary">Edit</a></div>
+				                   			<div><a href="${path}admin/book/edit/${details.index}" class="btn btn-primary">Edit</a></div>
 				                   		</c:if>
 									</c:when>
 									<c:otherwise>
 										<c:if test="${sessionScope.memberVo.member_level eq 10}">
-				                   			<div><a href="${path}/admin/equipment/edit/${details.index}" class="btn btn-primary">Edit</a></div>
+				                   			<div><a href="${path}admin/equipment/edit/${details.index}" class="btn btn-primary">Edit</a></div>
 				                   		</c:if>
 									</c:otherwise>
 								</c:choose>
@@ -83,7 +83,7 @@
 </section>
 
 
-<iframe src="${path}/pokemon" width="100%" height="1000px"></iframe>
+<iframe src="${path}pokemon" width="100%" height="1000px"></iframe>
 
 
 

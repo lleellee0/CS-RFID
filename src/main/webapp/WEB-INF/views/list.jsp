@@ -30,7 +30,7 @@
                 <li data-app-prevent-settings="" data-target="#slider-27" class="active" data-slide-to="0"></li><li data-app-prevent-settings="" data-target="#slider-27" data-slide-to="1"></li><li data-app-prevent-settings="" data-target="#slider-27" data-slide-to="2"></li>
             </ol>
             <div class="carousel-inner" role="listbox">
-                <div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height active" style="background-image: url(${path}/assets/images/13-fhd.jpg);">
+                <div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height active" style="background-image: url(${path}assets/images/13-fhd.jpg);">
                     <div class="mbr-box__magnet mbr-box__magnet--center-left mbr-box__magnet--sm-padding">
                     <div class="mbr-overlay"></div>                        
                         <div class=" container">
@@ -44,7 +44,7 @@
                                     <p class="mbr-hero__subtext">${topThreeBooksList[0].content}</p>
                                 </div>
                                 <div class="mbr-buttons btn-inverse mbr-buttons--left">
-                                	<a class="mbr-buttons__btn btn btn-lg btn-primary" href="${path}/list/book/details/${topThreeBooksList[0].index}">Details</a>
+                                	<a class="mbr-buttons__btn btn btn-lg btn-primary" href="${path}list/book/details/${topThreeBooksList[0].index}">Details</a>
                                 </div>
                                 </div>
                                 <div class="col-md-3">
@@ -53,7 +53,7 @@
                             </div>
                         </div>
                     </div>
-                </div><div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height" style="background-image: url(${path}/assets/images/4.jpg);">
+                </div><div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height" style="background-image: url(${path}assets/images/4.jpg);">
                     <div class="mbr-box__magnet mbr-box__magnet--center-center mbr-box__magnet--sm-padding">
                     <div class="mbr-overlay"></div>                        
                         <div class=" container">
@@ -71,14 +71,14 @@
                                     <p class="mbr-hero__subtext">${topThreeBooksList[1].content}</p>
                                 </div>
                                 <div class="mbr-buttons btn-inverse mbr-buttons--center">
-                                	<a class="mbr-buttons__btn btn btn-lg btn-primary" href="${path}/list/book/details/${topThreeBooksList[1].index}">Details</a>
+                                	<a class="mbr-buttons__btn btn btn-lg btn-primary" href="${path}list/book/details/${topThreeBooksList[1].index}">Details</a>
                                 </div>
                                 </div>
                                 
                             </div>
                         </div>
                     </div>
-                </div><div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height" style="background-image: url(${path}/assets/images/15-revert-fhd.jpg);">
+                </div><div class="mbr-box mbr-section mbr-section--relative mbr-section--fixed-size mbr-section--bg-adapted item dark center mbr-section--full-height" style="background-image: url(${path}assets/images/15-revert-fhd.jpg);">
                     <div class="mbr-box__magnet mbr-box__magnet--center-right mbr-box__magnet--sm-padding">
                     <div class="mbr-overlay"></div>                        
                         <div class=" container">
@@ -91,7 +91,7 @@
 									<h2 class="mbr-hero__subtext">${topThreeBooksList[2].writer}/${topThreeBooksList[2].publisher}</h2>
                                     <p class="mbr-hero__subtext">${topThreeBooksList[2].content}</p>
                                 </div>
-                                <div class="mbr-buttons btn-inverse mbr-buttons--left mbr-buttons--right"><a class="mbr-buttons__btn btn btn-lg btn-primary" href="${path}/list/book/details/${topThreeBooksList[2].index}">Details</a></div>
+                                <div class="mbr-buttons btn-inverse mbr-buttons--left mbr-buttons--right"><a class="mbr-buttons__btn btn btn-lg btn-primary" href="${path}list/book/details/${topThreeBooksList[2].index}">Details</a></div>
                                 </div>
                                 <div class="col-md-3">
                                 	<img src="${topThreeBooksList[2].img}" style="width:100%;">
@@ -147,7 +147,7 @@
 								      	<c:forEach items="${bookList}" var="list" varStatus="status">
 								      		<tr>
 	                                			<th><c:out value="${list.index}"/></th>
-	                                			<td><a href="${path}/list/book/details/${list.index}" class="screenshot" 
+	                                			<td><a href="${path}list/book/details/${list.index}" class="screenshot" 
 	                                			rel="${list.img}" title='<c:out value="${list.content}"/>'><c:out value="${list.title}"/></a></td>
 	                                			<td><c:out value="${list.writer}"/></td>
 	                                			<td><c:out value="${list.publisher}"/></td>
@@ -193,7 +193,7 @@
 								      	<c:forEach items="${equipmentList}" var="list" varStatus="status">
 								      		<tr>
 	                                			<th><c:out value="${list.index}"/></th>
-	                                			<td><a href="${path}/list/equipment/details/${list.index}" class="screenshot" 
+	                                			<td><a href="${path}list/equipment/details/${list.index}" class="screenshot" 
 	                                			rel="${list.img}" title='<c:out value="${list.content}"/>'><c:out value="${list.title}"/></a></td>
 	                                			<c:choose>
 	                                				<c:when test="${list.borrowed_member_index eq 0}">
@@ -246,7 +246,7 @@ $(".pagination li a span").on("mouseout", function(event) {
 
 function requestBookPage(page) {
 	$.ajax({
-	    url : "${path}/list/book",
+	    url : "${path}list/book",
 	    dataType : "json",
 	    type : "post",
 	    data : {"page":page, "type":"book"},
@@ -257,7 +257,7 @@ function requestBookPage(page) {
 	        for(var i = 0, len = Object.keys(data).length; i < len;i++) {
 	        	code += "<tr>";
 	        	code += "<th>" + data[i][0] + "</th>";
-	        	code += "<td><a href='${path}/list/book/details/" + data[i][0] + "' class='screenshot' ";
+	        	code += "<td><a href='${path}list/book/details/" + data[i][0] + "' class='screenshot' ";
 	        	code += "rel='" + data[i][1] + "' title='" + data[i][2] + "'>" + data[i][3] + "</a></td>";
 	        	code += "<td>" + data[i][4] + "</td>";
 	        	code += "<td>" + data[i][5] + "</td>";
@@ -270,7 +270,7 @@ function requestBookPage(page) {
 			$('#bookTable').html(code);
 			console.log(data[5]);
 			screenshotPreview();	// 미리보기 이벤트 등록
-			window.history.replaceState(null, "", "${path}/list/book/" + page);	// URL 변경
+			window.history.replaceState(null, "", "${path}list/book/" + page);	// URL 변경
 			validateByUrl();
 	    },
 	    error:function(request,status,error){
@@ -290,7 +290,7 @@ $("#bookTab").on("click", ".pagination .page a", function(event) {
 
 function requestEquipmentPage(page) {
 	$.ajax({
-	    url : "${path}/list/equipment",
+	    url : "${path}list/equipment",
 	    dataType : "json",
 	    type : "post",
 	    data : {"page":page, "type":"equipment"},
@@ -301,7 +301,7 @@ function requestEquipmentPage(page) {
 	        for(var i = 0, len = Object.keys(data).length; i < len;i++) {
 	        	code += "<tr>";
 	        	code += "<th>" + data[i][0] + "</th>";
-	        	code += "<td><a href='${path}/list/equipment/details/" + data[i][0] + "' class='screenshot' ";
+	        	code += "<td><a href='${path}list/equipment/details/" + data[i][0] + "' class='screenshot' ";
 	        	code += "rel='" + data[i][1] + "' title='" + data[i][2] + "'>" + data[i][3] + "</a></td>";
 	        	if(data[i][4] === "enabled")
 	        		code += "<td class='enabled'>대여가능 </td>";
@@ -312,7 +312,7 @@ function requestEquipmentPage(page) {
 			$('#equipmentTable').html(code);
 			console.log(data[5]);
 			screenshotPreview();	// 미리보기 이벤트 등록
-			window.history.replaceState(null, "", "${path}/list/equipment/" + page);	// URL 변경
+			window.history.replaceState(null, "", "${path}list/equipment/" + page);	// URL 변경
 			validateByUrl();
 	    },
 	    error:function(request,status,error){
@@ -367,7 +367,7 @@ $("#equipmentTabButton a").on("click", function(event) {
 //	$(event.target).closest("li").addClass("active");
 });
 </script>
-<script src="${path}/assets/js/main.js"></script>
+<script src="${path}assets/js/main.js"></script>
 
 </body>
 </html>

@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 public class SingletonSetting {
 	private static SingletonSetting instance = new SingletonSetting();
 	
-	private String path = "/controller";
+	private String path = "/controller/";
 	
 	private String databaseUrl = "jdbc:mysql://localhost:3306/";
 	private String databaseName = "csems" + "?useUnicode=true&characterEncoding=utf8";

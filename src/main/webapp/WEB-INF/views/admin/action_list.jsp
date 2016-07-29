@@ -7,7 +7,7 @@
   <!-- Site made with Mobirise Website Builder v2.11.1, https://mobirise.com -->
   <%@include file="../include/meta.jsp" %>
   <%@include file="../include/css.jsp" %>
-  <link rel= "stylesheet" href="${path}/assets/form/form.css" type="text/css">
+  <link rel= "stylesheet" href="${path}assets/form/form.css" type="text/css">
   
   
 </head>
