@@ -33,10 +33,10 @@ public class EquipmentDao {
 		}.execute();
 	}
 	
-	public void update(final EquipmentVo vo) throws Exception {
+	public void update(final EquipmentVo vo) {
 		sql = new StringBuffer();
 		sql.append("UPDATE equipment ");
-		sql.append("SET rfid=?, title=?, content=?, img=? ");
+		sql.append("SET rfid=?, title=?, content=?, img=?, borrowed_member_index=? ");
 		sql.append("WHERE `index`=?");
 		
 		new AbstractDao() {
@@ -47,7 +47,8 @@ public class EquipmentDao {
 				pstmt.setString(2, vo.getTitle());
 				pstmt.setString(3, vo.getContent());
 				pstmt.setString(4, vo.getImg());
-				pstmt.setInt(5, vo.getIndex());
+				pstmt.setInt(5, vo.getBorrowed_member_index());
+				pstmt.setInt(6, vo.getIndex());
 				
 				pstmt.executeUpdate();
 			}

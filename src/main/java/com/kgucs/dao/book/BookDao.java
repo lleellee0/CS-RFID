@@ -38,8 +38,10 @@ public class BookDao {
 	public void update(final BookVo vo) {
 		sql = new StringBuffer();
 		sql.append("UPDATE book ");
-		sql.append("SET rfid=?, title=?, writer=?, publisher=?, content=?, img=? ");
+		sql.append("SET rfid=?, title=?, writer=?, publisher=?, content=?, img=?, borrowed_member_index=? ");
 		sql.append("WHERE `index`=?");
+		
+		System.out.println(sql);
 		
 		new AbstractDao() {
 			@Override
@@ -51,7 +53,8 @@ public class BookDao {
 				pstmt.setString(4, vo.getPublisher());
 				pstmt.setString(5, vo.getContent());
 				pstmt.setString(6, vo.getImg());
-				pstmt.setInt(7, vo.getIndex());
+				pstmt.setInt(7, vo.getBorrowed_member_index());
+				pstmt.setInt(8, vo.getIndex());
 				
 				pstmt.executeUpdate();
 			}
