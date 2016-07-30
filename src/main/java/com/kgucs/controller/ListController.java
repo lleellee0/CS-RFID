@@ -191,4 +191,22 @@ public class ListController {
 
 		return "details";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/list/title", method = RequestMethod.POST)
+	public HashMap<String, Object> titleListData() {
+		HashMap<String, Object> hashmap = new HashMap<String, Object>();
+		BookDao dao = new BookDao();
+		List<BookVo> list = dao.selectAll();
+		
+		for(int i = 0; i < list.size(); i++) {
+			BookVo vo = list.get(i);
+			String arr[] = new String[2];
+			arr[0] = Integer.toString(vo.getIndex());
+			arr[1] = vo.getTitle();
+			hashmap.put(Integer.toString(i), arr);
+		}
+
+		return hashmap;
+	}
 }

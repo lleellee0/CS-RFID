@@ -18,6 +18,7 @@
   }
   </style>
   
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
   
 </head>
 <body>
@@ -222,14 +223,44 @@
                         </div>
                         
                     </div>
+                    <div class="col-md-8 col-md-offset-2">
+				        <div class="input-group" style="width:100%;">
+				          <input id="search" type="text" class="form-control" placeholder="Search for...">
+				        </div>
+			      	</div>
                 </div>
             </div>
         </div>
     </div>
+    
 </section>
 <%@include file="include/footer.jsp" %>
 <%@include file="include/script.jsp" %>
 
+<!-- Title 자동완성 -->
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<script>
+var availableTags = new Array();
+  $( function() {
+    $( "#search" ).autocomplete({
+      source: availableTags
+    });
+  } );
+
+$(document).ready(function() {
+	$.ajax({
+		url : "${path}list/title",
+		type : "post",
+		success : function(data) {
+			for(var i = 0, len = Object.keys(data).length; i < len;i++) {
+	        	availableTags.push(data[i][1]);
+	        }
+		}
+	});
+});
+</script>
+
+<!-- 페이지 이벤트 -->
 <script>
 $(".pagination li a").on("mouseover", function(event) {
 	$(event.target).css("margin", "0px 5px");
