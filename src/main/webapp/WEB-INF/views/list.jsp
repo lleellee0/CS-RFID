@@ -186,6 +186,18 @@
 <!-- 								        <li><a href="#" aria-label="Next" style="margin: 0px;"><span aria-hidden="true">»</span></a></li>-->
 								     </ul>
 								   </nav>
+								   <div class="col-md-8 col-md-offset-2">
+							        <div class="input-group" style="margin-top: 10px;">
+							          <input id="search" type="text" class="form-control" placeholder="Search for...">
+							          <span class="input-group-btn">
+							            <a href="#content6-24"><button id="searchButton" class="btn btn-default" type="button" style="
+							            border: 1px solid #ccc;
+							           	padding: 6px 12px;
+						           	    border-radius: 0px;
+							            "><span class="glyphicon glyphicon-search"></span></button></a>
+							          </span>
+							        </div><!-- /input-group -->
+							      </div>
                                 </div>
                             </div>
                         </div>
@@ -235,11 +247,7 @@
                         </div>
                         
                     </div>
-                    <div class="col-md-8 col-md-offset-2">
-				        <div class="input-group" style="width:100%;">
-				          <input id="search" type="text" class="form-control" placeholder="Search for...">
-				        </div>
-			      	</div>
+			      	
                 </div>
             </div>
         </div>
@@ -254,7 +262,7 @@
 <script>
 var availableTags = new Array();
   $( function() {
-    $( "#search" ).autocomplete({
+    $('#search').autocomplete({
       source: availableTags
     });
   } );
@@ -267,6 +275,40 @@ $(document).ready(function() {
 			for(var i = 0, len = Object.keys(data).length; i < len;i++) {
 	        	availableTags.push(data[i][1]);
 	        }
+		}
+	});
+});
+
+$('#searchButton').on("click", function(event) {
+	var searchInput = $('#search').val();
+	$.ajax({
+		url : "${path}list/title/" + searchInput,
+		type : "post",
+		success : function(data) {
+			$('#bookTable').empty();
+	        var code = "";
+	        console.log(Object.keys(data).length);
+	        for(var i = 0, len = Object.keys(data).length; i < len;i++) {
+	        	code += "<tr>";
+	        	code += "<th>" + data[i][0] + "</th>";
+	        	code += "<td><a href='${path}list/book/details/" + data[i][0] + "' class='screenshot' ";
+	        	code += "rel='" + data[i][1] + "' title='" + data[i][2] + "'>" + data[i][3] + "</a></td>";
+	        	code += "<td>" + data[i][4] + "</td>";
+	        	code += "<td>" + data[i][5] + "</td>";
+	        	if(data[i][6] === "enabled")
+	        		code += "<td class='enabled'>대출가능 </td>";
+	        	else
+	        		code += "<td class='disabled'>대출중 </td>";
+	        	code += "</tr>"
+	        }
+			$('#bookTable').html(code);
+			console.log(data[5]);
+			screenshotPreview();	// 미리보기 이벤트 등록
+			window.history.replaceState(null, "", "${path}list/book/" + page);	// URL 변경
+			validateByUrl();
+	    },
+	    error:function(request,status,error){
+	        alert("code:"+request.status+"\n"+"error:"+error);
 		}
 	});
 });

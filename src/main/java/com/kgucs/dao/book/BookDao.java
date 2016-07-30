@@ -222,6 +222,38 @@ public class BookDao {
 		return list;
 	}
 	
+	public List<BookVo> selectByTitle(final String title) {
+		sql = new StringBuffer();
+		sql.append("SELECT * FROM ");
+		sql.append("book WHERE ");
+		sql.append("title=?");
+		
+		new AbstractDao() {
+			@Override
+			public void query() throws Exception {
+				pstmt = con.prepareStatement(sql.toString());
+				
+				pstmt.setString(1, title);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					BookVo vo = new BookVo(); 
+					vo.setIndex(rs.getInt(1));
+					vo.setRfid(rs.getInt(2));
+					vo.setTitle(rs.getString(3));
+					vo.setWriter(rs.getString(4));
+					vo.setPublisher(rs.getString(5));
+					vo.setContent(rs.getString(6));
+					vo.setImg(rs.getString(7));
+					vo.setBorrowed_member_index(rs.getInt(8));
+					vo.setDue_date(rs.getString(9));
+					list.add(vo);
+				}
+			}
+		}.execute();
+		return list;
+	}
+	
 	public int getLastPageNumber() {
 		sql = new StringBuffer();
 		sql.append("SELECT count(*) FROM ");

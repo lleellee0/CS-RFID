@@ -194,16 +194,43 @@ public class ListController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/list/title", method = RequestMethod.POST)
-	public HashMap<String, Object> titleListData() {
+	public HashMap<String, Object> bookTitleListData() {
 		HashMap<String, Object> hashmap = new HashMap<String, Object>();
-		BookDao dao = new BookDao();
-		List<BookVo> list = dao.selectAll();
+		BookDao bookDao = new BookDao();
+		List<BookVo> bookList = bookDao.selectAll();
 		
-		for(int i = 0; i < list.size(); i++) {
-			BookVo vo = list.get(i);
+		for(int i = 0; i < bookList.size(); i++) {
+			BookVo vo = bookList.get(i);
 			String arr[] = new String[2];
 			arr[0] = Integer.toString(vo.getIndex());
 			arr[1] = vo.getTitle();
+			hashmap.put(Integer.toString(i), arr);
+		}
+
+		return hashmap;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/list/title/{title}", method = RequestMethod.POST)
+	public HashMap<String, Object> bookTitleSearchListData(@PathVariable("title") String title) {
+		System.out.println(title);
+		HashMap<String, Object> hashmap = new HashMap<String, Object>();
+		BookDao dao = new BookDao();
+		List<BookVo> list = dao.selectByTitle(title);
+		
+		for(int i = 0; i < list.size(); i++) {
+			BookVo vo = list.get(i);
+			String arr[] = new String[7];
+			arr[0] = Integer.toString(vo.getIndex());
+			arr[1] = vo.getImg();
+			arr[2] = vo.getContent();
+			arr[3] = vo.getTitle();
+			arr[4] = vo.getWriter();
+			arr[5] = vo.getPublisher();
+			if(vo.getBorrowed_member_index() == 0)
+				arr[6] = "enabled";
+			else
+				arr[6] = "disabled";
 			hashmap.put(Integer.toString(i), arr);
 		}
 
