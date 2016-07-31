@@ -68,7 +68,20 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2 class="text-uppercase space20">대출 및 대여(공통)</h2>
-                            <p>Cras consequat porttitor tincidunt. Aliquam erat volutpat. Sed dignissim hendrerit nibh, quis faucibus erat cursus eget. Integer porta nisl vitae felis rutrum ut mollis felis congue. Vestibulum augue nisl, egestas eu rhoncus eu, fermentum in leo. Pellentesque ultricies pharetra nulla sit amet sagittis. Curabitur at feugiat nibh. Duis sit amet odio eros. Donec non purus non augue cursus convallis sed id purus. In fringilla luctus scelerisque. Donec mauris magna, iaculis non suscipit eu, pellentesque nec urna.</p>
+                            <div class="row space20">
+		                    	<div class="col-md-3">
+		                        	<img class="space20" src="${path}assets/images/howtouse_borrow_1.png" style="width:100%;">
+		                        	<p><span style="color:#ff5555">[1-대출]</span> QR CODE 혹은 NFC를 이용해 링크로 이동하셨다면 BORROW 버튼을 눌러 대출이 가능합니다.</p>
+		                        </div>
+		                        <div class="col-md-3 col-md-offset-1">
+		                        	<img class="space20" src="${path}assets/images/howtouse_borrow_2.png" style="width:100%;">
+		                        	<p><span style="color:#ff5555">[2-대출확인]</span> BORROW를 누른 후 대출이 정상적으로 이루어졌는지 확인하세요. 본인의 학번 및 이름이 나와있다면 정상적으로 대출이 된 것입니다. 또한 대출된 내용은 Profile에서 확인이 가능합니다.</p>
+		                        </div>
+		                        <div class="col-md-3 col-md-offset-2">
+		                        	<img class="space20" src="${path}assets/images/howtouse_borrow_3.png" style="width:100%;">
+		                        	<p><span style="color:#ff5555">[3-대출중인 도서]</span> 대출중인 도서는 반납이 이루어지기 전까지 대출이 불가능합니다. 대출하고 싶으면 대출 중인 사람에게 물어보세요.</p>
+		                        </div>
+		                    </div>
                         </div>
                     </div>
                 </div>
@@ -86,7 +99,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2 class="text-uppercase space20">반납</h2>
-                            <p>Cras consequat porttitor tincidunt. Aliquam erat volutpat. Sed dignissim hendrerit nibh, quis faucibus erat cursus eget. Integer porta nisl vitae felis rutrum ut mollis felis congue. Vestibulum augue nisl, egestas eu rhoncus eu, fermentum in leo. Pellentesque ultricies pharetra nulla sit amet sagittis. Curabitur at feugiat nibh. Duis sit amet odio eros. Donec non purus non augue cursus convallis sed id purus. In fringilla luctus scelerisque. Donec mauris magna, iaculis non suscipit eu, pellentesque nec urna.</p>
+                            <p>훈련 다녀와서..</p>
                         </div>
                     </div>
                 </div>
