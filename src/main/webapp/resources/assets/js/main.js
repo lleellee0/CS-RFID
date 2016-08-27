@@ -19,12 +19,15 @@ this.screenshotPreview = function(){
 		
 	/* END CONFIG */
 	$("a.screenshot").hover(function(e){
-		this.t = this.title;
-		this.title = "";	
-		var c = (this.t != "") ? "<span style='padding-left:4px;'>" + this.t : "</span>";
+		if((this.title).length > 70)
+			this.t = (this.title).substr(0, 68) + "...";
+		else
+			this.t = this.title;
+		this.title = "";
+		var c = (this.t != "") ? "<span style='padding-left:4px;float:right;width:162px;'>" + this.t : "</span>";
 		$("body").append("<p id='screenshot' style='background-color:#f0f0f0;" +
 				"width:300px;height:200px;float:left;padding: 5px 5px;border-radius: 4px 4px 4px 4px;" +
-				"box-shadow: 5px 5px 5px lightgray;" +
+				"box-shadow: 5px 5px 5px lightgray;float:left;" +
 				"'><img src='"+ this.rel +"' alt='url preview' style='width:128px;height:190px;' />"+ c +"</p>");								 
 		$("#screenshot")
 			.css("top",(e.pageY - xOffset) + "px")
