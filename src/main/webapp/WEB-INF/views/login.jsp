@@ -184,15 +184,23 @@ textarea {
   margin-top: -20px;
   text-align: right;
 }
+
+.fixed{
+	height:100px;
+	width: 100%;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+}
 </style>
   
   
 </head>
-<body style="height:100%;">
+<body style="height:100%;background-image: url(${path}assets/images/7.jpg);background-repeat: repeat;">
 <%@include file="include/nav.jsp" %>
 
 <section id="header2-2" style="height:100%;">
-    <div class="intro intro7" style="background-image: url(${path}assets/images/7.jpg); height:100%;">
+    <div class="intro intro7" style="height:100vmin;background-repeat: repeat-y;">
         <div class="overlay"></div>
         <div class="container" style="height:100%;">
             <div class="row center-content center-content-ipad">
@@ -226,7 +234,6 @@ textarea {
     </div>
 </section>
 
-<%@include file="include/footer.jsp" %>
 <%@include file="include/script.jsp" %>
 
 <script>

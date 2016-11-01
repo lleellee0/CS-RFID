@@ -99,7 +99,10 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h2 class="text-uppercase space20">반납</h2>
-                            <p>훈련 다녀와서..</p>
+                            <div class="col-md-4 col-md-offset-4">
+		                        	<img class="space20" src="${path}assets/images/return.jpg" style="width:100%;">
+		                        	<p><span style="color:#ff5555">[1-RFID 태그]</span> 라즈베리파이에 연결된 RFID Reader에 책의 nfc 태그 부분(QR Code로 가려진 부분)을 태그하시면 책이 반납됩니다.</p>
+		                    </div>
                         </div>
                     </div>
                 </div>
@@ -121,6 +124,9 @@
 							하지만 누가 대출중인지 로그인하지 않은 사람도 볼 수 있게 하는 것은 조금 꺼림칙할 것 같다고 생각했습니다. 
 							그래서 대출 중인 사람이 누구인지 확인하는 것은 도서 및 기자재의 링크(상세정보라고 하겠습니다.)를 클릭하여 들어가고 나서 확인할 수 있도록 하였습니다.
 							 그리고 상세정보를 보기 위해선 반드시 로그인이 필요하도록 구현했습니다.</p>
+							<p>사이트 이용중 문의 사항이 생기면<span style="color:#ff5555"> lleellee013@gmail.com</span>으로 이메일 바랍니다.
+							※구현 방법에 대한 질문도 환영합니다.
+							</p>
                         </div>
                     </div>
                 </div>

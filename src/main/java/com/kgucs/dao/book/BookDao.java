@@ -60,6 +60,7 @@ public class BookDao {
 			}
 		}.execute();
 	}
+	
 	public List<BookVo> selectAll() {
 		sql = new StringBuffer();
 		sql.append("SELECT * FROM ");
