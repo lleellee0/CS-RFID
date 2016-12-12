@@ -10,7 +10,8 @@ public class SingletonSetting {
 	private String databaseUrl = "jdbc:mysql://localhost:3306/";
 	private String databaseName = "csems" + "?useUnicode=true&characterEncoding=utf8";
 	private String userName = "root";
-	private String userPassword = "rfid123"; // Clab에 있는 노트북
+	private String userPassword = "mysql123"; // Clab에 있는 노트북
+
 	
 	private int pageSize = 15;
 	
@@ -26,6 +27,7 @@ public class SingletonSetting {
 	public String getDatabaseName() { return this.databaseName; }
 	public String getUserName() { return this.userName; }
 	public String getUserPassword() { return this.userPassword; }
+	
 	
 	public int getPageSize() { return this.pageSize; }
 	
