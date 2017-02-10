@@ -1,5 +1,6 @@
 package com.kgucs.controller;
 
+import java.util.HashMap;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,8 +13,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kgucs.dao.actionlog.ActionLogDao;
+import com.kgucs.dao.actionlog.ActionLogVo;
 import com.kgucs.dao.book.BookDao;
 import com.kgucs.dao.book.BookVo;
 import com.kgucs.dao.equipment.EquipmentDao;
@@ -211,5 +214,77 @@ public class AdminController {
 
 		model.addAttribute("script", "location.replace('" + ssi.getPath() + "list/equipment/details/" + index +"');");		// 뒤로가기하면 Edit 창이 뜬당..
 		return "script";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/admin/return/book/{rfid}", method = RequestMethod.PUT)
+	public HashMap<String, Object> returnBook(Locale locale, Model model, @PathVariable("rfid") int rfid) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		SingletonSetting ssi = SingletonSetting.getInstance();
+		ssi.setAllParameter(model);
+		
+		HashMap<String, Object> hashmap = new HashMap<String, Object>();
+		BookDao dao = new BookDao();
+		BookVo vo = dao.selectByRfid(rfid);
+		
+		if(vo.getBorrowed_member_index() != 0) {	// 대출자가 있는 상황
+			int borrowed_member_index = vo.getBorrowed_member_index();
+			vo.setBorrowed_member_index(0);
+			
+			dao.update(vo);
+			
+			ActionLogDao logDao = new ActionLogDao();
+			ActionLogVo logVo = new ActionLogVo("book", vo.getIndex(), "return", borrowed_member_index); 
+			
+			logDao.insert(logVo);
+			
+			hashmap.put("message", "return_ok");
+		} else {									// 대출중인 도서가 아님
+			ActionLogDao logDao = new ActionLogDao();
+			ActionLogVo logVo = new ActionLogVo("book", vo.getIndex(), "already_returned", 0); 
+			
+			logDao.insert(logVo);
+			
+			hashmap.put("message", "already_returned");
+		}
+		
+		return hashmap;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/admin/return/equipment/{rfid}", method = RequestMethod.PUT)
+	public HashMap<String, Object> returnEquipment(Locale locale, Model model, @PathVariable("rfid") int rfid) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		SingletonSetting ssi = SingletonSetting.getInstance();
+		ssi.setAllParameter(model);
+		
+		HashMap<String, Object> hashmap = new HashMap<String, Object>();
+		EquipmentDao dao = new EquipmentDao();
+		EquipmentVo vo = dao.selectByRfid(rfid);
+		
+		if(vo.getBorrowed_member_index() != 0) {	// 대출자가 있는 상황
+			int borrowed_member_index = vo.getBorrowed_member_index();
+			vo.setBorrowed_member_index(0);
+			
+			dao.update(vo);
+			
+			ActionLogDao logDao = new ActionLogDao();
+			ActionLogVo logVo = new ActionLogVo("equipment", vo.getIndex(), "return", borrowed_member_index); 
+			
+			logDao.insert(logVo);
+			
+			hashmap.put("message", "return_ok");
+		} else {									// 대출중인 장비가 아님
+			ActionLogDao logDao = new ActionLogDao();
+			ActionLogVo logVo = new ActionLogVo("equipment", vo.getIndex(), "already_returned", 0); 
+			
+			logDao.insert(logVo);
+			
+			hashmap.put("message", "already_returned");
+		}
+		
+		return hashmap;
 	}
 }

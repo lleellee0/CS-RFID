@@ -85,40 +85,6 @@ public class BorrowController {
 		return "borrow";
 	}
 	
-	@RequestMapping(value = "/return/book/{rfid}", method = RequestMethod.GET)
-	public String returnBook(Locale locale, Model model, @PathVariable("rfid") int rfid) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		SingletonSetting ssi = SingletonSetting.getInstance();
-		ssi.setAllParameter(model);
-		
-		BookDao dao = new BookDao();
-		BookVo vo = dao.selectByRfid(rfid);
-		
-		if(vo.getBorrowed_member_index() != 0) {	// 대출자가 있는 상황
-			int borrowed_member_index = vo.getBorrowed_member_index();
-			vo.setBorrowed_member_index(0);
-			
-			dao.update(vo);
-			
-			ActionLogDao logDao = new ActionLogDao();
-			ActionLogVo logVo = new ActionLogVo("book", vo.getIndex(), "return", borrowed_member_index); 
-			
-			logDao.insert(logVo);
-			
-			model.addAttribute("string", "return_ok");
-		} else {									// 대출중인 도서가 아님
-			ActionLogDao logDao = new ActionLogDao();
-			ActionLogVo logVo = new ActionLogVo("book", vo.getIndex(), "already_returned", 0); 
-			
-			logDao.insert(logVo);
-			
-			model.addAttribute("string", "already_returned");
-		}
-		
-		return "borrow";
-	}
-	
 	@RequestMapping(value = "/borrow/equipment/{rfid}", method = RequestMethod.GET)
 	public String borrowEquipment(Locale locale, Model model, @PathVariable("rfid") int rfid) {
 		logger.info("Welcome home! The client locale is {}.", locale);

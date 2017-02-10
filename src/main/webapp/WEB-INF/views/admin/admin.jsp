@@ -110,6 +110,60 @@
         </div>    
 </section>
 
+<section class="mbr-section--bg-adapted mbr-section--relative" id="counters2-8" style="background-color: rgb(34, 34, 34);">
+    <div id="stats2" class="bg-dark" style="padding-top: 120px; padding-bottom: 120px;">
+        
+        <div class="container">
+            <div class="row">
+                    <div class="stats2-info">
+                    <!-- <span class="count">899</span> 카운트하고 싶으면.. -->
+                        <p>
+                        	Book Return
+                        	<div id="wrapper">
+						        <form action="#" onSubmit="return returnBook();">
+						            <fieldset>
+						                <legend>Return Form</legend>
+						                <div>
+						                    <input id="returnBookRfid" type="text" name="rfid" placeholder="RFID를 찍어주세요." required/>
+						                </div>
+						                <input type="submit" name="submit" value="Send"/>
+						            </fieldset>    
+						        </form>
+						    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+
+<section class="mbr-section--bg-adapted mbr-section--relative" id="counters2-9" style="background-color: #550044;">
+    <div id="stats2" class="bg-dark" style="padding-top: 120px; padding-bottom: 120px;">
+        
+        <div class="container">
+            <div class="row">
+                    <div class="stats2-info">
+                    <!-- <span class="count">899</span> 카운트하고 싶으면.. -->
+                        <p>
+                        	Equipment Return
+                        	<div id="wrapper">
+						        <form action="#" onSubmit="return returnEquipment(event);">
+						            <fieldset>
+						                <legend>Return Form</legend>
+						                <div>
+						                    <input type="text" name="rfid" placeholder="RFID를 찍어주세요." required/>
+						                </div>
+						                <input type="submit" name="submit" value="Send"/>
+						            </fieldset>    
+						        </form>
+						    </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>    
+</section>
+
 <section class="mbr-section--bg-adapted mbr-section--relative mbr-after-navbar" id="msg-box11-35" style="background-color: rgb(51, 106, 134);">
     <div class="article elements-content" style="padding-top: 100px; padding-bottom: 100px;">
         
@@ -139,6 +193,35 @@
 </section>
 <%@include file="../include/footer.jsp" %>
 <%@include file="../include/script.jsp" %>
+
+<script>
+var returnBook = function(event) {
+	$.ajax({
+		url: "${path}admin/return/book/" + $('#returnBookRfid').val(),
+		type: "put",
+		success: function(data) {
+			alert(data.message);
+			return false;
+		}
+	});
+	event.preventDefault();
+	
+	return false;
+}
+
+var returnEquipment = function() {
+	$.ajax({
+		url: "${path}admin/return/equipment/" + $('#returnEquipmentRfid').val(),
+		type: "put",
+		success: function(data) {
+			alert(data.message);
+			return false;
+		}
+	});
+	
+	return false;
+}
+</script>
 
 </body>
 </html>
