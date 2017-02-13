@@ -201,10 +201,8 @@ var returnBook = function(event) {
 		type: "put",
 		success: function(data) {
 			alert(data.message);
-			return false;
 		}
 	});
-	event.preventDefault();
 	
 	return false;
 }
@@ -215,7 +213,6 @@ var returnEquipment = function() {
 		type: "put",
 		success: function(data) {
 			alert(data.message);
-			return false;
 		}
 	});
 	
