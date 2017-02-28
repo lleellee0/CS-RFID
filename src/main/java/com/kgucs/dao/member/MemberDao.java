@@ -9,6 +9,8 @@ public class MemberDao {
 	int count = 0;
 	
 	public void insert(final MemberVo vo) throws Exception {
+		sql = new StringBuffer();
+		
 		sql.append("INSERT INTO member ");
 		sql.append("(id, password, std_number, name, member_level) ");
 		sql.append("VALUES (?,password(?),?,?,?)");
@@ -42,6 +44,34 @@ public class MemberDao {
 				pstmt = con.prepareStatement(sql.toString());
 				pstmt.setString(1, id);
 				pstmt.setString(2, password);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					mv.setIndex(rs.getInt(1));
+					mv.setId(rs.getString(2));
+					mv.setPassword(rs.getString(3));
+					mv.setStd_number(rs.getString(4));
+					mv.setName(rs.getString(5));
+					mv.setMember_level(rs.getInt(6));
+				}
+			}
+		}.execute();
+		return mv;
+	}
+	
+	public MemberVo selectById(final String id) {
+		/*
+		 * 파라미터에 final이 붙는 이유 http://devbible.tistory.com/30
+		 */
+		sql.append("SELECT * FROM ");
+		sql.append("member WHERE ");
+		sql.append("id=?");
+		
+		new AbstractDao() {
+			@Override
+			public void query() throws Exception {
+				pstmt = con.prepareStatement(sql.toString());
+				pstmt.setString(1, id);
 				rs = pstmt.executeQuery();
 				
 				while(rs.next()) {

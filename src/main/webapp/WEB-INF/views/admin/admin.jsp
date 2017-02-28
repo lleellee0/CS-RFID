@@ -164,6 +164,45 @@
         </div>    
 </section>
 
+<section class="mbr-section--bg-adapted mbr-section--relative" id="counters2-10" style="background-color: rgb(34, 34, 34);">
+    <div id="stats2" class="bg-dark" style="padding-top: 120px; padding-bottom: 120px;">
+        
+        <div class="container">
+            <div class="row">
+                    <div class="stats2-info">
+                    <!-- <span class="count">899</span> 카운트하고 싶으면.. -->
+                        <p>
+                        	Member Registration
+                        	<div id="wrapper">
+						        <form action="${path}admin/member/regist" method="post">
+						            <fieldset>
+						                <legend>Register Form</legend>
+						                <div>
+						                    <input type="text" name="id" placeholder="USER ID" required/>
+						                </div>
+						                <div>
+						                    <input type="password" name="password" placeholder="USER PASSWORD" required/>
+						                </div>
+						                <div>
+						                    <input type="text" name="std-number" placeholder="USER STD-NUMBER" required/>
+						                </div> 
+						                <div>
+						                    <input type="text" name="name" placeholder="USER NAME" required/>
+						                </div>
+						                <input type="submit" name="submit" value="Send"/>
+						            </fieldset>    
+						        </form>
+						    </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+</section>
+
+
+
 <section class="mbr-section--bg-adapted mbr-section--relative mbr-after-navbar" id="msg-box11-35" style="background-color: rgb(51, 106, 134);">
     <div class="article elements-content" style="padding-top: 100px; padding-bottom: 100px;">
         
@@ -191,6 +230,7 @@
         </div>
     </div>
 </section>
+
 <%@include file="../include/footer.jsp" %>
 <%@include file="../include/script.jsp" %>
 

@@ -287,4 +287,26 @@ public class AdminController {
 		
 		return hashmap;
 	}
+	
+	@RequestMapping(value = "/admin/member/regist", method = RequestMethod.POST)
+	public void memberRegist(Locale locale, Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		
+		SingletonSetting ssi = SingletonSetting.getInstance();
+		ssi.setAllParameter(model);
+		
+		MemberDao dao = new MemberDao();
+		
+		if(dao.selectById(request.getParameter("id")).getIndex() == 0) {	// 없으면..
+			MemberVo vo = new MemberVo(request.getParameter("id"),
+					request.getParameter("password"),
+					request.getParameter("std-number"),
+					request.getParameter("name"),
+					1);
+			
+			dao.insert(vo);
+			response.sendRedirect(ssi.getPath() + "admin/admin#counters2-10");
+		} else {	// 있으면
+			response.sendRedirect(ssi.getPath() + "admin/admin#counters2-10?status=duplicate-id");
+		}
+	}
 }
